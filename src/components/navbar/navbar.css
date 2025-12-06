@@ -1,0 +1,40 @@
+.home-header {
+  background-color: var(--body-color);
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.home-header .container {
+  display: flex;
+  gap: 10px;
+}
+.home-header .logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--main-color);
+}
+.home-header .logo img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+.home-header .logo h2 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+.home-header .logo h4 {
+  line-height: 1;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 600;
+}
+.home-header nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  text-transform: capitalize;
+  color: var(--font-color);
+}
