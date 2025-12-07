@@ -1,0 +1,22 @@
+.landing {
+  background-color: var(--transparent-color);
+  min-height: calc(100vh - 80px);
+}
+.landing .container {
+  gap: 30px;
+}
+.landing .img img {
+  border-radius: 10px;
+}
+.landing .landing-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.landing .landing-text h1 {
+  text-transform: capitalize;
+  line-height: 1;
+}
+.landing .landing-text h1 span {
+  color: var(--main-color);
+}

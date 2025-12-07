@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import "./button.css";
 /**
  * @typedef {Object} IconButtonProps
  * @property {string} [className]

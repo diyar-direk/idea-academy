@@ -38,7 +38,7 @@ img {
   justify-content: center;
 }
 .container {
-  width: 90%;
+  width: 85%;
   margin-inline: auto;
 }
 
@@ -68,6 +68,7 @@ input {
 body {
   --body-color: #fff;
   --main-color: #4682b4;
+  --transparent-color: #4683b415;
   --border-color: #83838340;
   --section-color: #f0f1f3;
   --font-color: #000;

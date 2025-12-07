@@ -80,7 +80,14 @@ button.sending:disabled {
   border: none;
   cursor: pointer;
   position: relative;
-  background-color: transparent;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--font-color);
+  font-size: 20px;
 }
 .icon-button .icon-button-hover {
   position: absolute;
@@ -92,16 +99,7 @@ button.sending:disabled {
   max-width: 130px;
   pointer-events: none;
   z-index: 1;
-}
-.icon-button > *:not(.icon-button-hover) {
-  display: flex;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 17px;
-  align-items: center;
-  justify-content: center;
-  color: var(--font-color);
+  font-size: 13px;
 }
 .icon-button-hover.bottom {
   left: 50%;
@@ -127,25 +125,25 @@ button.sending:disabled {
   opacity: 1;
 }
 
-.icon-button.main > *:not(.icon-button-hover) {
+.icon-button.main {
   background-color: var(--main-color);
   color: white;
 }
-.icon-button.body-color > *:not(.icon-button-hover) {
+.icon-button.body-color {
   background-color: var(--body-color);
 }
-.icon-button.delete > *:not(.icon-button-hover) {
+.icon-button.delete {
   background-color: #c22323;
   color: white;
 }
 
-.icon-button.secondry-color > *:not(.icon-button-hover) {
+.icon-button.secondry-color {
   background-color: var(--section-color);
 }
-.icon-button:not(.main):hover > *:not(.icon-button-hover) {
+.icon-button:not(.main):hover {
   background-color: var(--border-color);
 }
-.icon-button.delete:hover > *:not(.icon-button-hover) {
+.icon-button.delete:hover {
   background-color: #8b2222;
 }
 .icon-button-hover::before {
@@ -182,17 +180,17 @@ button.sending:disabled {
     letter-spacing: 0px;
     gap: 5px;
   }
-  .icon-button > *:not(.icon-button-hover) {
+  .icon-button {
     width: 35px;
     height: 35px;
     font-size: 14px;
   }
   .icon-button .icon-button-hover {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 @media (max-width: 600px) {
-  .icon-button > *:not(.icon-button-hover) {
+  .icon-button {
     width: 30px;
     height: 30px;
     font-size: 12px;

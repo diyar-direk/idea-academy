@@ -37,4 +37,29 @@
   gap: 10px;
   text-transform: capitalize;
   color: var(--font-color);
+  align-items: center;
+}
+.home-header nav a {
+  position: relative;
+  font-weight: 600;
+  font-size: 17px;
+}
+.home-header nav a.active,
+.home-header nav a:hover {
+  color: var(--main-color);
+}
+
+.home-header nav a:not(.active)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--main-color);
+  left: 50%;
+  transition: 0.4s;
+  transform: translateX(-50%);
+}
+.home-header nav a:not(.active):hover::after {
+  width: 100%;
 }
