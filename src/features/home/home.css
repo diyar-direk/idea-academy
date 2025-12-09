@@ -1,22 +1,99 @@
 .landing {
   background-color: var(--transparent-color);
-  min-height: calc(100vh - 80px);
+  min-height: calc(90vh - 80px);
+  gap: 50px;
+  align-items: center;
 }
-.landing .container {
-  gap: 30px;
-}
+
 .landing .img img {
   border-radius: 10px;
+  box-shadow: 0 0 20px var(--transparent-color);
+  max-height: 350px;
+  width: 100%;
+  object-fit: cover;
 }
 .landing .landing-text {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 .landing .landing-text h1 {
   text-transform: capitalize;
   line-height: 1;
+  color: var(--font-color);
+  text-shadow: 0 0 10px var(--main-color);
+  font-size: 35px;
 }
 .landing .landing-text h1 span {
   color: var(--main-color);
+  opacity: 0.7;
+}
+.landing .landing-text .btn {
+  min-width: 100px;
+}
+.landing .landing-text p {
+  font-size: 16px;
+  color: var(--font-color);
+}
+.landing .landing-text .statistics {
+  justify-content: space-between;
+  color: var(--font-color);
+  width: 90%;
+  margin: auto;
+}
+.landing .landing-text .statistics article {
+  text-align: center;
+}
+.landing .landing-text .statistics h2 {
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 27px;
+}
+.landing .landing-text .statistics h2::before {
+  content: "+";
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+.cards-container .card {
+  background-color: var(--section-color);
+  padding: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: center;
+  color: var(--font-color);
+}
+.cards-container .card .icon {
+  color: white;
+  background: var(--main-color);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 50%;
+  margin: auto;
+  transition: 0.7s;
+}
+.cards-container .card:hover .icon {
+  box-shadow: 0 0 0 350px var(--main-color);
+}
+.cards-container .card:hover {
+  color: white;
+}
+.cards-container .card h2 {
+  font-size: 23px;
+  text-transform: capitalize;
+}
+.cards-container .card p {
+  opacity: 0.7;
+}
+
+.home-btn {
+  margin-top: 20px;
+  margin-inline: auto;
 }

@@ -1,9 +1,24 @@
 .home-header {
-  background-color: var(--body-color);
   height: 80px;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 0 20px 0 var(--aside-color);
+  backdrop-filter: blur(4px);
+  background: #ffffff75;
 }
+body.dark .home-header {
+  background-color: #141419a8;
+}
+.home-header .icon-button.body-color {
+  background-color: transparent;
+}
+.home-header .icon-button.body-color:hover {
+  background-color: var(--aside-color);
+}
+
 .home-header .container {
   display: flex;
   gap: 10px;
@@ -46,6 +61,7 @@
 }
 .home-header nav a.active,
 .home-header nav a:hover {
+  text-shadow: 0 0 20px var(--main-color);
   color: var(--main-color);
 }
 

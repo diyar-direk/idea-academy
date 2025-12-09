@@ -11,20 +11,18 @@
   cursor: pointer;
   letter-spacing: 1px;
 }
-.btn.main {
-  --btn-hover: #327189;
-}
+
 .btn.delete {
   --main-color: #c22323;
-  --btn-hover: #8b2222;
+  --hover-color: #8b2222;
 }
 .btn.save {
   --main-color: #1b944d;
-  --btn-hover: #19703d;
+  --hover-color: #19703d;
 }
 .btn.cancel {
   --main-color: #5a5a5a;
-  --btn-hover: #464646;
+  --hover-color: #464646;
 }
 
 .btn.contained {
@@ -33,7 +31,7 @@
   border: solid 1px transparent;
 }
 .btn.contained:hover {
-  background-color: var(--btn-hover);
+  background-color: var(--hover-color);
 }
 
 .btn.outlined {
