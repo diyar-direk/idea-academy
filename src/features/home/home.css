@@ -21,11 +21,15 @@
   text-transform: capitalize;
   line-height: 1;
   color: var(--font-color);
-  text-shadow: 0 0 10px var(--main-color);
   font-size: 35px;
+  -webkit-text-fill-color: var(--transparent-color);
+  -webkit-text-stroke: 1px var(--font-color);
+  font-weight: 600;
 }
 .landing .landing-text h1 span {
+  -webkit-text-stroke: 2px var(--main-color);
   color: var(--main-color);
+  text-shadow: 0 0 20px var(--main-color);
   opacity: 0.7;
 }
 .landing .landing-text .btn {
@@ -96,4 +100,87 @@
 .home-btn {
   margin-top: 20px;
   margin-inline: auto;
+}
+
+.home-register {
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: url("../../assets/register.jpg") center no-repeat;
+  background-size: cover;
+}
+.home-register::before {
+  content: "";
+  position: absolute;
+  background: #136eb9b5;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.home-register h1 {
+  font-size: 40px;
+  text-transform: capitalize;
+  max-width: 60%;
+  margin: auto;
+}
+.home-register p {
+  max-width: 60%;
+  margin-block: 20px;
+  margin-inline: auto;
+  font-size: 18px;
+  font-weight: 500;
+}
+.home-register a {
+  background-color: white;
+  color: var(--main-color);
+  padding: 10px 15px;
+  display: inline-block;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.home-register a:hover {
+  background-color: var(--hover-color);
+  color: white;
+}
+
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 20px;
+}
+.events-container .event-card {
+  background-color: var(--section-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.events-container .event-card iframe,
+.events-container .event-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.events-container .event-card > div {
+  padding: 20px;
+  color: var(--font-color);
+}
+.events-container .event-card > div h2 {
+  text-transform: capitalize;
+  font-size: 23px;
+  font-weight: 700;
+}
+.events-container .event-card > div p {
+  opacity: 0.7;
+  font-size: 15px;
+  font-weight: 500;
+}
+.events-container .event-card > div > div {
+  opacity: 0.5;
+  font-size: 13px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

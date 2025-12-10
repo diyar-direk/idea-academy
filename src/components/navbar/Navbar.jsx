@@ -3,7 +3,6 @@ import "./navbar.css";
 import Logo from "../../assets/logo.png";
 import IconButton from "./../buttons/IconButton";
 import Button from "./../buttons/Button";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage, faMoon } from "@fortawesome/free-solid-svg-icons";
 import useDarkMode from "./../../../../school_sql/src/hooks/useDarkMode";
