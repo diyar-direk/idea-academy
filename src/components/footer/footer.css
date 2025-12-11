@@ -1,0 +1,83 @@
+footer {
+  background-color: black;
+  padding-block: 30px;
+  color: white;
+}
+footer .footer-header {
+  margin-bottom: 15px;
+  gap: 20px;
+}
+footer .footer-header > div {
+  flex: 250px;
+}
+footer .footer-header > div h1 {
+  text-transform: capitalize;
+  line-height: 1;
+  color: #888;
+  font-size: 30px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #888;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+footer .footer-header > div .socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+footer .footer-header > div .socials a {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: #2c2c2c;
+  color: #777777;
+  font-size: 15px;
+}
+footer .footer-header > div p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777777;
+}
+
+footer .footer-header > div h2 {
+  text-transform: capitalize;
+  line-height: 1;
+  color: #888;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+footer .footer-header > div.links {
+  display: flex;
+  flex-direction: column;
+}
+footer .footer-header > div.links a {
+  color: #ccc;
+  text-transform: capitalize;
+  line-height: 1.5;
+}
+footer .footer-header > div.links a:hover {
+  color: var(--main-color);
+  transform: translateX(10px);
+}
+footer .footer-header .info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #888;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+footer .footer-header .info svg {
+  font-size: 90%;
+  color: #555;
+}
+footer > p {
+  border-top: solid 1px var(--border-color);
+  padding-top: 10px;
+  text-align: center;
+}

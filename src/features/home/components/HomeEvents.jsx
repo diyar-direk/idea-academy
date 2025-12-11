@@ -31,10 +31,10 @@ const HomeEvents = () => {
         <div className="event-card">
           <iframe
             src="https://www.youtube.com/embed/C5q_y8dHhG0?si=dab5fvOpEGpnX1o6"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           />
           <div>
             <h2>Lorem ipsum dolor sit amet.</h2>
