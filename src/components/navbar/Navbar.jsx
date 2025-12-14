@@ -6,13 +6,14 @@ import Button from "./../buttons/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage, faMoon } from "@fortawesome/free-solid-svg-icons";
 import useDarkMode from "./../../../../school_sql/src/hooks/useDarkMode";
+import { pagesRouters } from "../../constants/pagesRouters";
 
 const Navbar = () => {
   const { changeMode } = useDarkMode();
 
   return (
     <header className="home-header gap-10 container">
-      <Link className="logo" to={"/"}>
+      <Link className="logo" to={pagesRouters.home}>
         <img src={Logo} alt="logo" />
         <div>
           <h2>idea academy</h2>

@@ -91,6 +91,9 @@ body.dark {
 .body-color {
   background-color: var(--body-color);
 }
+.transparent-background {
+  background-color: var(--transparent-color);
+}
 
 body.arabic {
   direction: rtl;
@@ -163,5 +166,16 @@ body::-webkit-scrollbar {
 @keyframes en-arrow {
   100% {
     transform: translateX(5px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,0 +1,142 @@
+.about-us {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.about-us > div {
+  flex: 400px;
+  color: var(--font-color);
+}
+.about-us .info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-us .info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-us .info h2 {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: capitalize;
+  background-color: var(--transparent-color);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.about-us .info h2 svg {
+  color: var(--main-color);
+  font-size: 22px;
+}
+
+.about-us .info h2:hover .arrow,
+.about-us .info h2.active .arrow {
+  rotate: 180deg;
+}
+
+.about-us .info h2.active + article {
+  display: flex;
+}
+.about-us .info article {
+  display: none;
+  gap: 10px;
+  flex-direction: column;
+  max-width: 89%;
+  margin: auto;
+  animation: fadeIn 0.5s;
+}
+
+.about-us .info p {
+  line-height: 1.6;
+}
+.about-us .info p:not(:last-child) {
+  border-bottom: solid 1px var(--border-color);
+  padding-bottom: 10px;
+}
+
+.about-us .img img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.features-container > div {
+  background-color: var(--body-color);
+  color: var(--font-color);
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.features-container > div:hover::before,
+.features-container > div:hover::after {
+  width: 100%;
+}
+.features-container > div:hover > div::before,
+.features-container > div:hover > div::after {
+  height: 100%;
+}
+
+.features-container > div::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: var(--main-color);
+  width: 0;
+  left: 0;
+  top: 0;
+  transition: 0.5s;
+}
+.features-container > div::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: var(--main-color);
+  width: 2px;
+  right: 0;
+  bottom: 0;
+  transition: 0.5s;
+}
+.features-container > div > div::before {
+  content: "";
+  position: absolute;
+  height: 0;
+  background: var(--main-color);
+  width: 2px;
+  left: 0;
+  top: 0;
+  transition: 0.5s;
+}
+.features-container > div > div::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  background: var(--main-color);
+  width: 2px;
+  right: 0;
+  bottom: 0;
+  transition: 0.5s;
+}
+
+.features-container > div svg {
+  color: var(--main-color);
+  font-size: 40px;
+  border-bottom: solid 3px var(--main-color);
+  padding-bottom: 10px;
+}

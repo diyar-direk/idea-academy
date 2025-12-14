@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  text-transform: capitalize;
+  padding-block: 10px;
+}
+
+.breadcrumbs a {
+  color: var(--font-color);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.breadcrumbs a:hover {
+  opacity: 1;
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.breadcrumbs a::after {
+  color: var(--main-color);
+  content: "/";
+  font-weight: bold;
+}
+
+.breadcrumbs .current {
+  color: var(--main-color);
+  font-weight: bold;
+}
