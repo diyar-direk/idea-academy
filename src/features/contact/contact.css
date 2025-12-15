@@ -63,6 +63,7 @@
 .contact-page form .inp textarea,
 .contact-page form .select-input .placeholder {
   background-color: var(--body-color);
+  border: solid 1px var(--border-color);
 }
 
 .contact-page form .inputs-container .inp {
