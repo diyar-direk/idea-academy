@@ -2,10 +2,10 @@ import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 import MainTitle from "../../components/main_title/MainTitle";
 import "./about.css";
 import AboutImg from "../../assets/about.jpg";
-import { faAngleUp, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useState } from "react";
-import { aboutTabContent } from "./aboutContent";
+import { aboutFeatures, aboutTabContent } from "./aboutContent";
 
 const About = () => {
   const [openTab, setOpenTab] = useState(0);
@@ -60,46 +60,15 @@ const About = () => {
           }
         />
         <div className="features-container">
-          <div>
-            <div>
-              <FontAwesomeIcon icon={faGraduationCap} />
-              <h3>الجودة التعليمية</h3>
-              <p>
-                نلتزم بأعلى معايير الجودة في تصميم المحتوى التعليمي وتقديمه، مع
-                الحرص على مواكبة أحدث التطورات التقنية.
-              </p>
+          {aboutFeatures?.map((t) => (
+            <div key={t.title}>
+              <div>
+                <FontAwesomeIcon icon={t.icon} />
+                <h3>{t.title}</h3>
+                <p>{t.description}</p>
+              </div>
             </div>
-          </div>
-          <div>
-            <div>
-              <FontAwesomeIcon icon={faGraduationCap} />
-              <h3>الجودة التعليمية</h3>
-              <p>
-                نلتزم بأعلى معايير الجودة في تصميم المحتوى التعليمي وتقديمه، مع
-                الحرص على مواكبة أحدث التطورات التقنية.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div>
-              <FontAwesomeIcon icon={faGraduationCap} />
-              <h3>الجودة التعليمية</h3>
-              <p>
-                نلتزم بأعلى معايير الجودة في تصميم المحتوى التعليمي وتقديمه، مع
-                الحرص على مواكبة أحدث التطورات التقنية.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div>
-              <FontAwesomeIcon icon={faGraduationCap} />
-              <h3>الجودة التعليمية</h3>
-              <p>
-                نلتزم بأعلى معايير الجودة في تصميم المحتوى التعليمي وتقديمه، مع
-                الحرص على مواكبة أحدث التطورات التقنية.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     </>

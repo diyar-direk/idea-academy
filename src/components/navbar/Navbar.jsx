@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage, faMoon } from "@fortawesome/free-solid-svg-icons";
 import useDarkMode from "./../../../../school_sql/src/hooks/useDarkMode";
 import { pagesRouters } from "../../constants/pagesRouters";
+import { pagesLinks } from "../../constants/pagesLink";
 
 const Navbar = () => {
   const { changeMode } = useDarkMode();
@@ -22,11 +23,11 @@ const Navbar = () => {
       </Link>
 
       <nav className="flex-1">
-        <NavLink to={"/"}> home</NavLink>
-        <NavLink to={"/about"}>about </NavLink>
-        <NavLink to={"/courses"}>courses</NavLink>
-        <NavLink to={"/courses"}>courses</NavLink>
-        <NavLink to={"/courses"}>courses</NavLink>
+        {pagesLinks?.map((link) => (
+          <NavLink key={link.to} to={link.to}>
+            {link.title}
+          </NavLink>
+        ))}
       </nav>
 
       <IconButton title="language" style={{ color: "var(--main-color)" }}>

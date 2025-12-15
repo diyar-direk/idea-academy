@@ -1,16 +1,9 @@
 import { Link } from "react-router";
 import "./footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faInstagram,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faEnvelope,
-  faLocationDot,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
+import { pagesLinks } from "../../constants/pagesLink";
+import { contactInfo } from "./../../constants/contactInfo";
+
 const Footer = () => {
   return (
     <footer className="container">
@@ -18,17 +11,17 @@ const Footer = () => {
         <div>
           <h1>idea academy</h1>
           <div className="socials">
-            <Link>
-              <FontAwesomeIcon icon={faYoutube} />
-            </Link>
+            <a href={contactInfo?.youtube?.link} target="_blank">
+              <FontAwesomeIcon icon={contactInfo?.youtube?.icon} />
+            </a>
 
-            <Link>
-              <FontAwesomeIcon icon={faFacebook} />
-            </Link>
+            <a href={contactInfo?.facebook?.link} target="_blank">
+              <FontAwesomeIcon icon={contactInfo?.facebook?.icon} />
+            </a>
 
-            <Link>
-              <FontAwesomeIcon icon={faInstagram} />
-            </Link>
+            <a href={contactInfo?.instagram?.link} target="_blank">
+              <FontAwesomeIcon icon={contactInfo?.instagram?.icon} />
+            </a>
           </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt,
@@ -37,28 +30,27 @@ const Footer = () => {
         </div>
         <div className="links">
           <h2>quick links</h2>
-          <Link>home</Link>
-          <Link>home</Link>
-          <Link>home</Link>
-          <Link>home</Link>
+          {pagesLinks?.map((link) => (
+            <Link key={link.to} to={link.to}>
+              {link.title}
+            </Link>
+          ))}
         </div>
 
         <div className="info-container flex flex-direction gap-10">
           <h2>contact us</h2>
           <span className="info">
-            <Link>
-              <FontAwesomeIcon icon={faLocationDot} />
-            </Link>
-            syria , qamishlo , aljalaa street
+            <FontAwesomeIcon icon={contactInfo?.address?.icon} />
+            {contactInfo?.address?.link}
           </span>
-          <Link className="info">
-            <FontAwesomeIcon icon={faEnvelope} />
-            diyardireki@gmail.com
-          </Link>
-          <Link className="info">
-            <FontAwesomeIcon icon={faPhone} />
-            +963 999 999 999
-          </Link>
+          <a href={`mailto:${contactInfo?.email?.link}`} className="info">
+            <FontAwesomeIcon icon={contactInfo?.email?.icon} />
+            {contactInfo?.email?.link}
+          </a>
+          <a href={`tel:${contactInfo.phone.link}`} className="info">
+            <FontAwesomeIcon icon={contactInfo?.phone?.icon} />
+            {contactInfo.phone.link}
+          </a>
         </div>
       </div>
       <p>© 2024 Idea Academy. All rights reserved.</p>

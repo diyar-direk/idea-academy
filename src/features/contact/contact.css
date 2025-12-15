@@ -1,0 +1,74 @@
+.contact-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+}
+.contact-page .contact-info {
+  flex: 400px;
+  color: var(--font-color);
+}
+
+.contact-page .contact-info > div {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-block: 15px;
+}
+.contact-page .contact-info .info > div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.contact-page .contact-info .info article {
+  color: var(--main-color);
+  background-color: var(--transparent-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-page .contact-info > div h3 {
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+
+.contact-page .contact-info .soial-links {
+  display: flex;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.contact-page form {
+  background-color: var(--section-color);
+  padding: 20px;
+  flex: 400px;
+  border-radius: 5px;
+  color: var(--font-color);
+}
+.contact-page form h2 {
+  margin-bottom: 20px;
+}
+
+.contact-page form .inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+}
+.contact-page form .inp .input-wrapper,
+.contact-page form .inp textarea,
+.contact-page form .select-input .placeholder {
+  background-color: var(--body-color);
+}
+
+.contact-page form .inputs-container .inp {
+  flex: 200px;
+}
+
+.contact-page form > .inp {
+  margin-block: 10px;
+}
