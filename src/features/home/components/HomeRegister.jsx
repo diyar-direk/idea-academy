@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { pagesRouters } from "../../../constants/pagesRouters";
 
 const HomeRegister = () => {
   return (
@@ -8,7 +9,7 @@ const HomeRegister = () => {
         انضم إلى آلاف الطلاب الذين غيروا مسارهم المهني وبدأوا مشوارهم في عالم
         البرمجة من خلال أكاديميتنا. لا تؤجل حلمك، ابدأ الآن!
       </p>
-      <Link> انضم لنا في الحال </Link>
+      <Link to={pagesRouters.courses}> انضم لنا في الحال </Link>
     </section>
   );
 };

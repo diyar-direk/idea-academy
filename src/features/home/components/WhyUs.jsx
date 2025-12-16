@@ -2,6 +2,8 @@ import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MainTitle from "../../../components/main_title/MainTitle";
 import Button from "../../../components/buttons/Button";
+import { Link } from "react-router";
+import { pagesRouters } from "../../../constants/pagesRouters";
 
 const WhyUs = () => {
   return (
@@ -45,8 +47,12 @@ const WhyUs = () => {
         </div>
       </div>
       <div className="gap-20 home-btn center">
-        <Button btnStyleType="outlined"> read more about us </Button>
-        <Button> contact us </Button>
+        <Link to={pagesRouters.about}>
+          <Button btnStyleType="outlined"> read more about us </Button>
+        </Link>
+        <Link to={pagesRouters.contact}>
+          <Button> contact us </Button>
+        </Link>
       </div>
     </section>
   );

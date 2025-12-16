@@ -1,5 +1,8 @@
+import { Link } from "react-router";
 import LandingImg from "../../../assets/landing.jpg";
 import Button from "../../../components/buttons/Button";
+import { pagesRouters } from "./../../../constants/pagesRouters";
+
 const Landing = () => {
   return (
     <main className="landing container flex">
@@ -14,8 +17,12 @@ const Landing = () => {
           possimus porro!
         </p>
         <div className="flex gap-10">
-          <Button btnStyleType="outlined"> explorer courses</Button>
-          <Button> join us</Button>
+          <Link to={pagesRouters.courses}>
+            <Button btnStyleType="outlined"> explorer courses</Button>
+          </Link>
+          <Link to={pagesRouters.contact}>
+            <Button> join us</Button>
+          </Link>
         </div>
         <div className="flex statistics">
           <article>

@@ -2,6 +2,9 @@ import MainTitle from "../../../components/main_title/MainTitle";
 import IMG from "../../../assets/landing.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { pagesRouters } from "../../../constants/pagesRouters";
+import { Link } from "react-router";
+import Button from "../../../components/buttons/Button";
 
 const HomeEvents = () => {
   return (
@@ -50,6 +53,9 @@ const HomeEvents = () => {
           </div>
         </div>
       </div>
+      <Link to={pagesRouters.events}>
+        <Button className="home-btn"> explorer all events </Button>
+      </Link>
     </section>
   );
 };

@@ -2,6 +2,8 @@ import MainTitle from "../../../components/main_title/MainTitle";
 import IMG from "../../../assets/landing.jpg";
 import CourseSCard from "../../../components/courses_card/CourseSCard";
 import Button from "../../../components/buttons/Button";
+import { Link } from "react-router";
+import { pagesRouters } from "../../../constants/pagesRouters";
 const LastCourses = () => {
   return (
     <section className="main-padding container section-color">
@@ -45,7 +47,9 @@ const LastCourses = () => {
           }}
         />
       </div>
-      <Button className="home-btn"> explorer all courses </Button>
+      <Link to={pagesRouters.courses}>
+        <Button className="home-btn"> explorer all courses </Button>
+      </Link>
     </section>
   );
 };

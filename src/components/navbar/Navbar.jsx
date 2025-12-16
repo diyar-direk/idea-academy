@@ -38,7 +38,9 @@ const Navbar = () => {
         <FontAwesomeIcon icon={faMoon} />
       </IconButton>
 
-      <Button btnStyleType="contained">contact us</Button>
+      <Link to={pagesRouters.contact}>
+        <Button btnStyleType="contained">contact us</Button>
+      </Link>
     </header>
   );
 };
