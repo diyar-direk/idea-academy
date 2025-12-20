@@ -15,14 +15,17 @@
 .btn.delete {
   --main-color: #c22323;
   --hover-color: #8b2222;
+  --transparent-color: #c223232a;
 }
 .btn.save {
   --main-color: #1b944d;
   --hover-color: #19703d;
+  --transparent-color: #1b944d1f;
 }
 .btn.cancel {
   --main-color: #5a5a5a;
   --hover-color: #464646;
+  --transparent-color: #5a5a5a1c;
 }
 
 .btn.contained {
@@ -32,6 +35,15 @@
 }
 .btn.contained:hover {
   background-color: var(--hover-color);
+}
+
+.btn.transparent {
+  background-color: var(--transparent-color);
+  color: var(--main-color);
+}
+.btn.transparent:hover {
+  background-color: var(--main-color);
+  color: white;
 }
 
 .btn.outlined {

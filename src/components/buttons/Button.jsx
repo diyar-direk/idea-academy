@@ -7,8 +7,8 @@ import "./button.css";
  * @property {boolean} isSending
  * @property {string} isSendingText
  * @property {string} className
- * @property {"contained" | "outlined"} btnStyleType
- * @property {"delete" | "main" | "save" | "cancel"} btnType
+ * @property {"contained" | "outlined" | "transparent"} btnStyleType
+ * @property {"delete" | "main" | "save" | "cancel" } btnType
  */
 
 /**

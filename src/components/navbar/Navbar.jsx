@@ -5,9 +5,9 @@ import IconButton from "./../buttons/IconButton";
 import Button from "./../buttons/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage, faMoon } from "@fortawesome/free-solid-svg-icons";
-import useDarkMode from "./../../../../school_sql/src/hooks/useDarkMode";
 import { pagesRouters } from "../../constants/pagesRouters";
 import { pagesLinks } from "../../constants/pagesLink";
+import useDarkMode from "./../../hooks/useDarkMode";
 
 const Navbar = () => {
   const { changeMode } = useDarkMode();

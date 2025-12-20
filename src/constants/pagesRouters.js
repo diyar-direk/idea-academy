@@ -8,4 +8,5 @@ export const pagesRouters = {
   courses: {
     page: "/courses",
   },
+  login: "/login",
 };

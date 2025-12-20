@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./courses.css";
 import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
-import dateFormatter from "./../../../../school_sql/src/utils/dateFormatter";
+import dateFormatter from "./../../utils/dateFormatter";
 
 const CourseSCard = ({ data }) => {
   return (

@@ -15,12 +15,6 @@
   gap: 20px;
 }
 
-.about-us .info > div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .about-us .info h2 {
   font-size: 25px;
   display: flex;
@@ -29,7 +23,7 @@
   text-transform: capitalize;
   background-color: var(--transparent-color);
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -42,20 +36,27 @@
 .about-us .info h2.active .arrow {
   rotate: 180deg;
 }
+.about-us .info h2.active {
+  border-radius: 10px 10px 0 0;
+}
 
 .about-us .info h2.active + article {
   display: flex;
+  padding-block: 10px;
+  background-color: var(--section-color);
+  border-radius: 0 0 10px 10px;
 }
+
 .about-us .info article {
   display: none;
   gap: 10px;
   flex-direction: column;
-  max-width: 89%;
-  margin: auto;
   animation: fadeIn 0.5s;
 }
 
 .about-us .info p {
+  max-width: 89%;
+  margin: auto;
   line-height: 1.6;
 }
 .about-us .info p:not(:last-child) {
