@@ -1,0 +1,14 @@
+.login-page {
+  height: calc(100vh - 100px);
+}
+.login-form {
+  margin: auto;
+  width: 70%;
+  max-width: 800px;
+  background-color: var(--body-color);
+  padding: 50px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
