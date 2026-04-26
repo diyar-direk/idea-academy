@@ -1,26 +1,62 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Button from "../buttons/Button";
 import { useDebounce } from "use-debounce";
 import { useInfiniteFetch } from "../../hooks/useInfiniteFetch";
 import "./inputs.css";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Skeleton from "./../skeleton/Skeleton";
+import RepeatChildren from "./../RepeatChildren";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { icons } from "./../../constant/icons";
+import { spritObject } from "../../utils/spritObject";
+import DBkeys from "../../constant/DBkeys";
 
 /**
- * @typedef {Object} SelectInputApiProps
- * @property {string} label - عنوان الحقل (اختياري).
- * @property {string} placeholder - النص الافتراضي الظاهر في حقل البحث أو العرض.
- * @property {(option: any) => string} optionLabel - دالة لتحويل كائن الخيار إلى نص قابل للعرض.
- * @property {(option: any) => void} onChange - دالة تُستدعى عند اختيار خيار من القائمة، تستقبل الكائن المختار.
- * @property {(option?: any) => void} onIgnore - دالة تُستدعى لحذف خيار (في حالة الاختيار المفرد أو المتعدد).
- * @property {any | any[]} value - القيمة الحالية المختارة، يمكن أن تكون كائن أو مصفوفة من الكائنات.
- * @property {boolean} isArray - تحدد إذا كانت القيمة المختارة مصفوفة (اختيار متعدد) أو مفردة.
- * @property {string} endPoint - رابط الـ API لجلب البيانات.
- * @property {object} params - خصائص اضافية للفلترة
- * @property {string} [errorText] - نص الخطأ ليتم عرضه (اختياري).
- * @property {number} [delay=500] - تأخير الـ debounce بالميللي ثانية (اختياري).
- * @property {HTMLElement} [addOption] - اضافة اختيار (اختياري).
- * @param {SelectInputApiProps & React.HTMLAttributes<HTMLDivElement>} props - خصائص الكومبوننت بالإضافة إلى خصائص HTML قياسية للـ div.
+
+ * @component
+ *
+ * @param {Object} props
+ *
+ * @param {string} [props.label]
+ * 
+ * @param {symbol} [props.labelIcon]
+ *
+ * @param {boolean} [props.notRequired=false]
+ * 
+ * 
+ * @param {string} props.placeholder
+ *
+ * @param {(option: any) => string} props.optionLabel
+ *
+ * @param {(option: any) => void} props.onChange
+ *
+ * @param {(option?: any) => void} props.onIgnore
+ *
+ * @param {any | any[]} props.value
+ *
+ * @param {boolean} [props.isArray=false]
+ * 
+ * @param {boolean} [props.showButton=false]
+ *
+ * @param {string} props.endPoint
+ *
+ * @param {Object} [props.params={}]
+ *
+ * @param {string} [props.errorText]
+ *
+ * @param {number} [props.delay=500]
+ *
+ * @param {Array<{
+ *   title: string,
+ *   onChange: () => void
+ * }>} [props.customOptions=[]]
+ *
+ * @param {React.HTMLAttributes<HTMLDivElement>} props.rest
+ *
+ * @returns {JSX.Element}
  */
+
 const SelectInputApi = ({
   placeholder,
   label,
@@ -32,8 +68,11 @@ const SelectInputApi = ({
   isArray,
   errorText,
   delay = 500,
-  addOption,
+  customOptions = [],
+  notRequired,
   params = {},
+  labelIcon,
+  showButton,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +81,8 @@ const SelectInputApi = ({
   const { t } = useTranslation();
   const { data, loadMoreRef, isFetching } = useInfiniteFetch({
     endPoint: endPoint,
-    limit: 3,
-    search: debouncedSearch,
+    [DBkeys.limit]: 3,
+    [DBkeys.search]: debouncedSearch,
     ...params,
   });
 
@@ -52,60 +91,69 @@ const SelectInputApi = ({
   const stopPropagation = useCallback((e) => {
     e.stopPropagation();
   }, []);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const toggleOpen = useCallback(
     (e) => {
       stopPropagation(e);
       setIsOpen((prev) => !prev);
     },
-    [stopPropagation]
+    [stopPropagation],
   );
 
   useEffect(() => {
-    const onBodyClick = () => {
-      if (isOpen) setIsOpen(false);
-      setSelectedIndex(-1);
-    };
-
+    if (!isOpen) return;
+    const onBodyClick = () => setIsOpen(false);
     window.addEventListener("click", onBodyClick);
 
     return () => {
       window.removeEventListener("click", onBodyClick);
     };
-  }, [isOpen]);
+  }, [isOpen, isArray]);
 
-  const handleKeyDown = (e) => {
-    if (!isOpen) return;
+  const labelClassName = useMemo(
+    () => `${!notRequired ? "required" : ""} title font-color`,
+    [notRequired],
+  );
 
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev < items.length - 1 ? prev + 1 : prev));
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev > 0 ? prev - 1 : prev));
-    } else if (e.key === "Enter" && selectedIndex >= 0) {
-      e.preventDefault();
-      onChange(items[selectedIndex]);
-      setIsOpen(false);
-      setSearch("");
-      setSelectedIndex(-1);
-    }
-  };
+  const handleChange = useCallback((e) => onChange(e), [onChange]);
+  const handleSearch = useCallback((e) => {
+    setSearch(e.target.value.toLowerCase());
+  }, []);
+
+  const optionClassName = useMemo(
+    () => `${isOpen ? "active " : ""} options`,
+    [isOpen],
+  );
+
+  const placeholderClassName = useMemo(
+    () => `${errorText ? "input-error-style" : ""} placeholder center relative`,
+    [errorText],
+  );
+
+  const placeholderValue = useMemo(() => {
+    const frontText = !isArray
+      ? optionLabel(value)
+      : value.length > 0 && spritObject(value, optionLabel);
+
+    const text = frontText || placeholder;
+
+    return text || `${t("common.select")} ${label}`;
+  }, [value, placeholder, label, t, isArray, optionLabel]);
 
   return (
     <div className="select-input inp">
       {label && (
-        <label className="title font-color" onClick={toggleOpen}>
+        <label className={labelClassName} onClick={toggleOpen}>
+          {labelIcon && <FontAwesomeIcon icon={labelIcon} />}
           {label}
         </label>
       )}
 
-      <div className="placeholder center relative" onClick={toggleOpen}>
-        <span className="flex-1 ellipsis"> {placeholder}</span>
-        <i className="fa-solid fa-chevron-down" />
+      <div className={placeholderClassName} onClick={toggleOpen}>
+        <span className="flex-1 ellipsis"> {placeholderValue}</span>
+        <FontAwesomeIcon icon={faChevronDown} />
 
-        <div {...props} className={`${isOpen ? "active " : ""} options`}>
+        <div {...props} className={optionClassName}>
           <label
             htmlFor="search"
             onClick={stopPropagation}
@@ -113,59 +161,71 @@ const SelectInputApi = ({
           >
             <input
               value={search}
-              onChange={(e) => {
-                setSearch(e.target.value.toLowerCase());
-                setSelectedIndex(-1);
-              }}
-              placeholder={t("filters.search")}
-              onKeyDown={handleKeyDown}
+              onChange={handleSearch}
+              placeholder={t("table.filters.search")}
               id="search"
             />
-            <i className="fa-solid fa-magnifying-glass" />
+            <FontAwesomeIcon icon={icons.search} />
           </label>
           <article>
-            {addOption}
+            {customOptions?.map((itm) => (
+              <h3 key={itm.title} onClick={itm.onChange}>
+                {itm.title}
+              </h3>
+            ))}
+
             {items?.map((itm, i) => (
               <h3
-                key={itm.id}
-                onClick={() => {
-                  onChange(itm);
-                }}
+                key={itm[DBkeys.id]}
+                onClick={() => handleChange(itm)}
                 ref={i === items?.length - 1 ? loadMoreRef : null}
-                className={i === selectedIndex ? "highlight" : ""}
+                className={`${isArray ? "array" : ""} ${
+                  isArray && value?.some((v) => v[DBkeys.id] === itm[DBkeys.id])
+                    ? "selected"
+                    : ""
+                }`}
               >
                 {optionLabel(itm)}
               </h3>
             ))}
             {isFetching && (
-              <p className="font-color">{t("teachers.loading")}</p>
+              <RepeatChildren count={3}>
+                <Skeleton height="20px" width="90%" />
+              </RepeatChildren>
             )}
           </article>
         </div>
       </div>
 
-      {isArray && value?.length > 0 ? (
-        <div className="array-of-values">
-          {value?.map((span, i) => (
+      {showButton && value && !isArray && (
+        <Button
+          onClick={onIgnore}
+          btnStyleType="transparent"
+          type="button"
+          className="selected-value"
+        >
+          {optionLabel(value)}
+          <FontAwesomeIcon icon={icons.close} />
+        </Button>
+      )}
+
+      {isArray && showButton && (
+        <div className="selected-values">
+          {value.map((v) => (
             <Button
-              onClick={() => onIgnore(span)}
-              key={span.id || i}
-              btnStyleType="outlined"
-              btnType="delete"
+              onClick={() => onIgnore(v)}
               className="selected-value"
+              btnStyleType="transparent"
+              type="button"
+              key={v[DBkeys.id]}
             >
-              {typeof span === "string" ? span : optionLabel(span)}
+              {optionLabel(v)}
+              <FontAwesomeIcon icon={icons.close} />
             </Button>
           ))}
         </div>
-      ) : (
-        !isArray &&
-        value && (
-          <Button onClick={onIgnore} btnStyleType="outlined" btnType="delete">
-            {typeof value === "string" ? value : optionLabel(value)}
-          </Button>
-        )
       )}
+
       {errorText && <p className="field-error">{errorText}</p>}
     </div>
   );

@@ -7,17 +7,18 @@ import React, {
   useState,
 } from "react";
 import "./inputs.css";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * @typedef {Object} utlis
  * @property {string} label
+ * @property {boolean} notRequired
  * @property {"input"|"textarea"} elementType
  * @property {React.HTMLAttributes<HTMLLabelElement>} labelProps
  * @property {string} errorText
- * @property {boolean} notRequired
  * @property {React.ReactNode} icon
+ * @property {React.ReactNode} labelIcon
  * @property {React.HTMLAttributes<HTMLParagraphElement>} helperTextProps
  * @property {React.HTMLAttributes<HTMLDivElement>} containerProps
  */
@@ -34,6 +35,7 @@ const Input = (props, ref) => {
     containerProps,
     elementType = "input",
     icon,
+    labelIcon,
     notRequired,
     ...rest
   } = props;
@@ -50,7 +52,7 @@ const Input = (props, ref) => {
       if (typeof ref === "function") ref(el);
       else if (ref) ref.current = el;
     },
-    [ref]
+    [ref],
   );
 
   const [showPassword, setShowPassword] = useState(false);
@@ -68,11 +70,15 @@ const Input = (props, ref) => {
     if (localRef.current) localRef.current.focus();
   }, []);
 
-  const labelClassName = useMemo(() => {
-    return `${labelProps?.className || ""} ${
-      !notRequired ? "required" : ""
-    }`.trim();
-  }, [labelProps?.className, notRequired]);
+  const labelClassName = useMemo(
+    () => `${!notRequired ? "required" : ""} ${labelProps?.className || ""}`,
+    [notRequired, labelProps],
+  );
+
+  const inputWrapperClassName = useMemo(
+    () => `${errorText ? "input-error-style" : ""} relative input-wrapper`,
+    [errorText],
+  );
 
   return (
     <div {...containerProps} className={divContainerClassName}>
@@ -82,18 +88,24 @@ const Input = (props, ref) => {
           htmlFor={rest.id || rest.name}
           className={labelClassName}
         >
+          {labelIcon && <FontAwesomeIcon icon={labelIcon} />}
           {label}
         </label>
       )}
 
       {elementType === "textarea" ? (
-        <textarea {...rest} id={rest.id || rest.name} ref={setRefs} />
+        <textarea
+          id={rest.id || rest.name}
+          {...rest}
+          ref={setRefs}
+          className={inputWrapperClassName}
+        />
       ) : (
-        <div className="relative input-wrapper">
+        <div className={inputWrapperClassName}>
           {icon && <span className="input-icon">{icon}</span>}
           <input
-            {...rest}
             id={rest.id || rest.name}
+            {...rest}
             type={computedType}
             ref={setRefs}
           />

@@ -9,4 +9,7 @@ export const pagesRouters = {
     page: "/courses",
   },
   login: "/login",
+  dashboard: {
+    statistics: "/dashboard",
+  },
 };

@@ -1,8 +1,9 @@
 import { useRef, useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../utils/ApiClient";
+import DBkeys from "../constant/DBkeys";
 
-export const useInfiniteFetch = ({ endPoint, ...params }) => {
+export const useInfiniteFetch = ({ endPoint, enabled = true, ...params }) => {
   const apiClient = new APIClient(endPoint);
   const loadMoreRef = useRef(null);
 
@@ -17,11 +18,10 @@ export const useInfiniteFetch = ({ endPoint, ...params }) => {
       }),
 
     getNextPageParam: (lastPage, allPages) => {
-      const nextPage = allPages.length + 1;
-      const totalPages = Math.ceil(lastPage.totalCount / lastPage.limit);
-
-      return nextPage <= totalPages ? nextPage : undefined;
+      const nextPage = allPages?.length + 1;
+      return nextPage <= lastPage?.[DBkeys.totalPages] ? nextPage : undefined;
     },
+    enabled,
   });
 
   const { fetchNextPage, hasNextPage, isFetching } = query;
@@ -35,7 +35,7 @@ export const useInfiniteFetch = ({ endPoint, ...params }) => {
           fetchNextPage();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 1 },
     );
 
     const current = loadMoreRef.current;

@@ -1,49 +1,32 @@
 import axiosInstance from "./axios";
+import DBkeys from "../constant/DBkeys";
 
 class APIClient {
   constructor(endPoint) {
     this.endPoint = endPoint;
   }
-  getAll = async ({ page = 1, sort = {}, limit = 10, ...params }) => {
-    const sortStatus = sort
-      ? Object.values(sort)
-          .filter((v) => v && v.trim() !== "")
-          .join(",")
-      : "";
-
+  getAll = async ({ page = 1, limit = 10, ...params }) => {
     const allParams = {
       ...params,
-      page,
-      limit,
+      [DBkeys.page]: page,
+      [DBkeys.limit]: limit,
     };
-
-    if (sortStatus) allParams.sort = sortStatus;
 
     const paramFilters = new URLSearchParams();
 
     Object.entries(allParams).forEach(([key, value]) => {
       if (value === undefined || value === null || value === "") return;
 
-      if (typeof value === "object" && !Array.isArray(value)) {
-        const cleanedObj = Object.fromEntries(
-          Object.entries(value).filter(
-            ([_, v]) => v !== null && v !== undefined && v !== ""
-          )
-        );
-
-        if (Object.keys(cleanedObj).length > 0) {
-          paramFilters.append(key, JSON.stringify(cleanedObj));
-        }
-      } else if (Array.isArray(value)) {
+      if (Array.isArray(value)) {
         const cleanedArray = value
-          .map((v) => (typeof v === "object" ? v.id || v.value || null : v))
+          .map((v) => v?.[DBkeys.id] ?? v?.value ?? v)
           .filter((v) => v !== null && v !== undefined && v !== "");
 
         if (cleanedArray.length > 0) {
           paramFilters.append(key, cleanedArray.join(","));
         }
       } else {
-        paramFilters.append(key, value.id || value);
+        paramFilters.append(key, value[DBkeys.id] || value);
       }
     });
 
@@ -51,35 +34,37 @@ class APIClient {
       params: paramFilters,
     });
 
-    const { total, data: d } = data;
+    const { total, total_pages, data: d } = data;
 
     return {
       data: d || data,
       totalCount: total || 0,
       limit,
+      total_pages: total_pages || Math.floor(total / limit),
     };
   };
 
   getOne = async (id) => {
-    const { data } = await axiosInstance.get(`${this.endPoint}/${id}`);
-
-    return data?.data;
+    const { data } = await axiosInstance.get(`${this.endPoint}${id}`);
+    return data?.data || data;
   };
-  deleteAll = async (ids) => {
-    await axiosInstance.delete(`${this.endPoint}`, {
-      ids,
-    });
+  deleteAll = async ({ ids }) => {
+    await axiosInstance.delete(this.endPoint, { data: { ids } });
   };
-  deleteOne = async ({ id }) => {
-    await axiosInstance.delete(`${this.endPoint}${id}/`);
+  deleteOne = async (id) => {
+    await axiosInstance.delete(`${this.endPoint}/${id}`);
   };
-  addData = async (data) => {
-    const res = await axiosInstance.post(this.endPoint, data);
-    return res?.data?.data || res?.data;
+  addData = async (d) => {
+    const { data } = await axiosInstance.post(this.endPoint, d);
+    return data.data || data;
   };
   updateData = async ({ data, id }) => {
-    const res = await axiosInstance.patch(`${this.endPoint}/${id}`, data);
-    return res.results;
+    const { data: res } = await axiosInstance.patch(
+      `${this.endPoint}${id}/`,
+      data,
+    );
+
+    return res.data;
   };
 }
 export default APIClient;

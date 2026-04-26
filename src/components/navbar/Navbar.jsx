@@ -28,6 +28,8 @@ const Navbar = () => {
             {link.title}
           </NavLink>
         ))}
+        <NavLink to={pagesRouters.login}>login</NavLink>
+        <NavLink to={pagesRouters.dashboard.statistics}>dashboard</NavLink>
       </nav>
 
       <IconButton title="language" style={{ color: "var(--main-color)" }}>

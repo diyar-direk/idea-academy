@@ -8,7 +8,7 @@ import "./button.css";
  * @property {string} isSendingText
  * @property {string} className
  * @property {"contained" | "outlined" | "transparent"} btnStyleType
- * @property {"delete" | "main" | "save" | "cancel" } btnType
+ * @property {"delete" | "main" | "save" | "cancel" | "update"} btnType
  */
 
 /**
@@ -22,28 +22,26 @@ const Button = ({
   btnStyleType = "contained",
   btnType = "main",
   className = "",
-  onClick,
-  ...rest
+  ...props
 }) => {
   const buttonClassName = useMemo(
     () =>
-      `btn ${
-        isSending ? "sending" : ""
-      } ${btnStyleType} ${btnType} ${className}`,
-    [className, isSending, btnStyleType, btnType]
+      `btn ${isSending ? "sending" : ""} ${
+        btnStyleType || "contained"
+      } ${btnType} ${className || ""}`,
+    [className, isSending, btnStyleType, btnType],
   );
 
   const buttonText = useMemo(
     () => (isSending ? `${isSendingText || "sending"} ...` : children),
-    [isSending, isSendingText, children]
+    [isSending, isSendingText, children],
   );
 
   return (
     <button
-      onClick={onClick}
       disabled={disabled || isSending}
       className={buttonClassName}
-      {...rest}
+      {...props}
     >
       {isSending && <article className="btn-loader" />}
       {buttonText}

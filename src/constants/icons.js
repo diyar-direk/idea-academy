@@ -1,0 +1,27 @@
+import {
+  faChartSimple,
+  faClose,
+  faEnvelope,
+  faEye,
+  faMagnifyingGlass,
+  faPenToSquare,
+  faPlus,
+  faShareFromSquare,
+  faTrash,
+  faUserPlus,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+
+export const icons = {
+  users: faUsers,
+  addUser: faUserPlus,
+  add: faPlus,
+  delete: faTrash,
+  share: faShareFromSquare,
+  close: faClose,
+  search: faMagnifyingGlass,
+  update: faPenToSquare,
+  view: faEye,
+  email: faEnvelope,
+  dashboard: faChartSimple,
+};
