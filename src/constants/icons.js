@@ -1,4 +1,6 @@
 import {
+  faBookOpen,
+  faCalendarDays,
   faChartSimple,
   faClose,
   faEnvelope,
@@ -24,4 +26,6 @@ export const icons = {
   view: faEye,
   email: faEnvelope,
   dashboard: faChartSimple,
+  events: faCalendarDays,
+  courses: faBookOpen,
 };

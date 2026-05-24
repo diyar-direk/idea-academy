@@ -1,7 +1,8 @@
 export const extarctErrorMessage = (error) => {
-  const message =
-    error?.response?.data?.message || error?.data?.message || error?.message;
-  const status = error?.response?.status || error?.status;
+  const { response, data } = error || {};
+
+  const { status } = response || error || {};
+  const { message } = response?.data || data || error || {};
 
   return `${status || ""} ${message || "Something went wrong"}`;
 };

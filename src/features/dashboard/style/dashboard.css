@@ -48,18 +48,53 @@
   display: flex;
 }
 
+.bottom-header .link {
+  position: relative;
+}
+
 .bottom-header .link h2 {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   text-transform: capitalize;
-  font-size: 18px;
-  padding-inline: 10px;
+  font-size: 17px;
+  padding-inline: 15px;
   border-bottom: solid 2px transparent;
+  cursor: pointer;
 }
 .bottom-header .link:hover h2,
-.bottom-header .link.active h2 {
+.bottom-header .link:has(.active) h2 {
   border-color: var(--main-color);
   background-color: var(--section-color);
+}
+.bottom-header .link article {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--body-color);
+  display: none;
+  flex-direction: column;
+  animation: fadeIn 0.3s;
+  min-width: 100%;
+}
+.bottom-header .link:hover article {
+  display: flex;
+}
+
+.bottom-header .link article a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: capitalize;
+  padding: 5px 10px;
+  white-space: nowrap;
+  font-size: 14px;
+  border-bottom: solid 1px var(--border-color);
+}
+
+.bottom-header .link article a:hover,
+.bottom-header .link article a.active {
+  background-color: var(--aside-color);
+  border-color: var(--main-color);
 }

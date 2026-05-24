@@ -6,23 +6,29 @@ import { contactRouter } from "../features/contact/router";
 import { loginRouter } from "../features/login/router";
 import { dashboardRouter } from "../features/dashboard/router/router";
 import DashboardLayout from "../features/dashboard/components/DashboardLayout";
+import { AuthProvider } from "../context/AuthContext";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <HomeLayout />,
+      element: <AuthProvider />,
       children: [
-        ...homeRouter,
-        ...aboutRouter,
-        ...contactRouter,
-        ...loginRouter,
+        {
+          path: "/",
+          element: <HomeLayout />,
+          children: [
+            ...homeRouter,
+            ...aboutRouter,
+            ...contactRouter,
+            ...loginRouter,
+          ],
+        },
+        {
+          path: "/dashboard",
+          element: <DashboardLayout />,
+          children: dashboardRouter,
+        },
       ],
-    },
-    {
-      path: "/dashboard",
-      element: <DashboardLayout />,
-      children: dashboardRouter,
     },
   ]);
   return <RouterProvider router={router} />;

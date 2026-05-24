@@ -1,20 +1,31 @@
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { dashboardLinks } from "../../../../constants/pagesLink";
 
 const BottomHeader = () => {
+  const nav = useNavigate();
+
   return (
     <div className="bottom-header">
-      <NavLink className="link">
-        <h2>
-          <FontAwesomeIcon icon={faUsers} /> users
-        </h2>
-        <article>
-          <h3>Lorem ipsum dolor sit.</h3>
-          <h3>Lorem ipsum dolor sit.</h3>
-          <h3>Lorem ipsum dolor sit.</h3>
-        </article>
-      </NavLink>
+      {dashboardLinks?.map((link) => (
+        <div className="link" key={link.to} onClick={() => nav(link.to)}>
+          <h2>
+            <FontAwesomeIcon icon={link.icon} />
+            {link.title}
+          </h2>
+          <article>
+            {link.children?.map((child) => (
+              <NavLink
+                to={child.to}
+                key={child.to}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <FontAwesomeIcon icon={child.icon} /> {child.title}
+              </NavLink>
+            ))}
+          </article>
+        </div>
+      ))}
     </div>
   );
 };
