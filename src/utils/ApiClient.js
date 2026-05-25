@@ -1,5 +1,5 @@
+import DBkeys from "../constants/DBkeys";
 import axiosInstance from "./axios";
-import DBkeys from "../constant/DBkeys";
 
 class APIClient {
   constructor(endPoint) {
@@ -40,7 +40,7 @@ class APIClient {
       data: d || data,
       totalCount: total || 0,
       limit,
-      total_pages: total_pages || Math.floor(total / limit),
+      total_pages: total_pages || Math.floor(total / limit) || 1,
     };
   };
 

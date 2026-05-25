@@ -1,7 +1,7 @@
 import { memo, useCallback } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
-import DBkeys from "../../constant/DBkeys";
+import DBkeys from "../../constants/DBkeys";
 
 const TableBody = ({
   column,

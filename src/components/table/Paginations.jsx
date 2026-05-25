@@ -47,6 +47,7 @@ const Paginations = ({
     const pagesCount = Math.ceil(dataLength / limit);
     return getVisiblePages(currentPage, pagesCount);
   }, [dataLength, currentPage, limit]);
+
   const onPageChange = useCallback(
     (page) => {
       setPage(page);

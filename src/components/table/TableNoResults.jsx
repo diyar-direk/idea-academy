@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { memo } from "react";
 import Button from "../buttons/Button";
 import { Link } from "react-router";
-import { icons } from "../../constant/icons";
 import { useTranslation } from "react-i18next";
+import { icons } from "../../constants/icons";
+
 const TableNoResults = ({ ...props }) => {
   const { t } = useTranslation();
   return (

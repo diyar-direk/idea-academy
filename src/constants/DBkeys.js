@@ -1,11 +1,12 @@
 const DBkeys = {
   limit: "limit",
-  id: "_id",
+  id: "id",
   sort: "sort",
   page: "page",
   totalPages: "totalPages",
   search: "search",
   createdAt: "createdAt",
+  updatedAt: "updatedAt",
 };
 
 export default DBkeys;

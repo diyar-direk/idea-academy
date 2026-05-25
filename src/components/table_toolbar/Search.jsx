@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
-import { icons } from "../../constant/icons";
+import { icons } from "../../constants/icons";
 
 const Search = ({ delay = 500, setSearch }) => {
   const [inputValue, setInputValue] = useState("");

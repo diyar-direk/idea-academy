@@ -10,7 +10,6 @@ import { sliceText } from "../../utils/sliceText.js";
  * @property {string} [to]
  * @property {string} [text]
  * @property {boolean} [fullPath=false]
- * @property {boolean} [fullTextReplace=false]
  * @property {boolean} [ignore=false]
  * @property {Object} [props]
  */
@@ -28,16 +27,12 @@ const Breadcrumbs = ({ replace = [] }) => {
   const { pathname } = useLocation();
   const pathes = useMemo(() => pathname.split("/").filter(Boolean), [pathname]);
 
-  const className = useMemo(
-    () =>
-      `${!pathname.startsWith("/dashboard") ? "home container" : ""} breadcrumbs`,
-    [pathname],
-  );
+  const className = useMemo(() => `${"home container"} breadcrumbs`, []);
   const { t } = useTranslation();
 
   return (
     <div className={className}>
-      <Link to="/"> {t("pages.home")} </Link>
+      <Link to="/"> {t("home")} </Link>
 
       {pathes.map((path, i) => {
         const replaceItem = replace.find((item) => item.from === path);
@@ -58,16 +53,13 @@ const Breadcrumbs = ({ replace = [] }) => {
 
         const text = sliceText(replaceItem?.text || path);
         const to = replacedPath || defaultTo;
-        const viewText = replaceItem?.fullTextReplace
-          ? text
-          : t(`pages.${text}`);
 
         return (
           <span key={defaultTo}>
             {isLast ? (
-              <span className="current">{viewText}</span>
+              <span className="current">{text}</span>
             ) : (
-              <Link to={to}>{viewText}</Link>
+              <Link to={to}>{text}</Link>
             )}
           </span>
         );

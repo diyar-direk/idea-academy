@@ -2,8 +2,8 @@ import { memo } from "react";
 import Button from "../buttons/Button";
 import "./popups.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icons } from "../../constant/icons";
 import { useTranslation } from "react-i18next";
+import { icons } from "../../constants/icons";
 
 /**
  * @typedef {Object} divProps
@@ -50,14 +50,16 @@ const ConfirmPopUp = ({
             btnType="cancel"
             type="button"
             btnStyleType="transparent"
-            {...closeButtonProps}>
+            {...closeButtonProps}
+          >
             {cancelText || t("common.cancel")}
           </Button>
           <Button
             type="button"
             onClick={onConfirm}
             btnType="delete"
-            {...confirmButtonProps}>
+            {...confirmButtonProps}
+          >
             {confirmText || t("common.confirm")}
           </Button>
         </div>

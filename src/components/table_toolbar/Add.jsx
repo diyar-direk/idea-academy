@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import IconButton from "../buttons/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
-import { icons } from "../../constant/icons";
+import { icons } from "../../constants/icons";
 
 const Add = ({ path, ...props }) => {
   const { t } = useTranslation();

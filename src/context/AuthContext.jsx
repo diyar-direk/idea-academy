@@ -13,12 +13,14 @@ import { extarctErrorMessage } from "../utils/extarctErrorMessage";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import endPoints from "../constants/endPoints";
+import AuthHelper from "../utils/authHelper";
 
 const AuthContext = createContext();
 export const AuthProvider = () => {
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   const query = useQueryClient();
+  const token = new AuthHelper().getToken();
 
   const isRefreshing = useRef(false);
   const failedQueue = useRef([]);
@@ -89,7 +91,7 @@ export const AuthProvider = () => {
 
           try {
             const { data } = await axiosInstance.post(endPoints.refresh);
-            const newToken = data.access_token;
+            const newToken = data.accessToken;
 
             axiosInstance.defaults.headers.common["Authorization"] =
               `Bearer ${newToken}`;
@@ -127,6 +129,7 @@ export const AuthProvider = () => {
     },
     retry: false,
     refetchOnWindowFocus: false,
+    enabled: Boolean(token),
   });
 
   if (isLoading) return <Loading />;

@@ -6,7 +6,7 @@ import { contactInfo } from "./../../constants/contactInfo";
 
 const Footer = () => {
   return (
-    <footer className="container">
+    <footer className="container home-footer">
       <div className="footer-header flex wrap">
         <div>
           <h1>idea academy</h1>

@@ -14,6 +14,7 @@ export const pagesRouters = {
     users: {
       page: "/dashboard/users",
       add: "/dashboard/users/add",
+      updatePassword: (id = ":id") => `/dashboard/users/${id}`,
     },
     events: {
       page: "/dashboard/events",

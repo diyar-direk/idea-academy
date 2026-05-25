@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import DBkeys from "../../constant/DBkeys";
+import DBkeys from "./../../constants/DBkeys";
 
 const TableHeader = ({
   selectable,

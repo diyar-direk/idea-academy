@@ -1,4 +1,5 @@
-import DBkeys from "../constant/DBkeys";
+import DBkeys from "../constants/DBkeys";
+
 export const formatInputsData = (data = {}) => {
   const formatted = {};
 

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { useDebounce } from "use-debounce";
-import DBkeys from "../../constant/DBkeys";
+import DBkeys from "../../constants/DBkeys";
 
 /**
  * @typedef {Object} FromToFieldsProps
@@ -22,7 +22,7 @@ import DBkeys from "../../constant/DBkeys";
  * @property {object} filters
  * @property {React.SetStateAction} setFilters
  * @property {boolean} [hideCreatedAtInputs]
- * @property {boolean} [hideCreatedByInputs]
+ * @property {boolean} [hideUpdatedAtInputs]
  * @property {FromToFieldsProps[]} FromToFields
  */
 
@@ -34,7 +34,8 @@ const Filters = ({
   children,
   filters,
   setFilters,
-  hideCreatedAtInputs = false,
+  hideCreatedAtInputs,
+  hideUpdatedAtInputs,
   FromToFields,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,16 +75,36 @@ const Filters = ({
             <Input
               label={`${t("common.from")} ${t("common.date")}`}
               type="date"
-              value={localFilters?.[`${[DBkeys.createdAt]}_gte`]}
-              name={`${[DBkeys.createdAt]}_gte`}
+              value={localFilters?.[`${[DBkeys.createdAt]}[gte]`]}
+              name={`${[DBkeys.createdAt]}[gte]`}
               onInput={handleChange}
               notRequired
             />
             <Input
               label={`${t("common.to")} ${t("common.date")}`}
               type="date"
-              value={localFilters?.[`${[DBkeys.createdAt]}_lte`]}
-              name={`${[DBkeys.createdAt]}_lte`}
+              value={localFilters?.[`${[DBkeys.createdAt]}[lte]`]}
+              name={`${[DBkeys.createdAt]}[lte]`}
+              onInput={handleChange}
+              notRequired
+            />
+          </>
+        )}
+        {!hideUpdatedAtInputs && (
+          <>
+            <Input
+              label={`${t("common.from")} ${t("common.date")}`}
+              type="date"
+              value={localFilters?.[`${[DBkeys.updatedAt]}[gte]`]}
+              name={`${[DBkeys.updatedAt]}[gte]`}
+              onInput={handleChange}
+              notRequired
+            />
+            <Input
+              label={`${t("common.to")} ${t("common.date")}`}
+              type="date"
+              value={localFilters?.[`${[DBkeys.updatedAt]}[lte]`]}
+              name={`${[DBkeys.updatedAt]}[lte]`}
               onInput={handleChange}
               notRequired
             />
@@ -99,8 +120,8 @@ const Filters = ({
                   label={`${t("common.from")} ${t(e.label)}`}
                   placeholder={`${t("common.from")} ${t(e.label)}`}
                   type={e.type || "date"}
-                  value={localFilters?.[`${e.name}_gte`]}
-                  name={`${e.name}_gte`}
+                  value={localFilters?.[`${e.name}[gte]`]}
+                  name={`${e.name}[gte]`}
                   notRequired
                   onInput={handleChange}
                 />
@@ -109,8 +130,8 @@ const Filters = ({
                   label={`${t("common.to")} ${t(e.label)}`}
                   placeholder={`${t("common.to")} ${t(e.label)}`}
                   type={e.type || "date"}
-                  value={localFilters?.[`${e.name}_lte`]}
-                  name={`${e.name}_lte`}
+                  value={localFilters?.[`${e.name}[lte]`]}
+                  name={`${e.name}[lte]`}
                   notRequired
                   onInput={handleChange}
                 />

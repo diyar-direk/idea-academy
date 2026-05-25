@@ -1,12 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import HomeLayout from "../components/HomeLayout";
-import { homeRouter } from "../features/home/router";
-import { aboutRouter } from "./../features/about/router";
-import { contactRouter } from "../features/contact/router";
-import { loginRouter } from "../features/login/router";
 import { dashboardRouter } from "../features/dashboard/router/router";
 import DashboardLayout from "../features/dashboard/components/DashboardLayout";
 import { AuthProvider } from "../context/AuthContext";
+import { homePagesRouter } from "./../features/router";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -16,12 +13,7 @@ const AppRouter = () => {
         {
           path: "/",
           element: <HomeLayout />,
-          children: [
-            ...homeRouter,
-            ...aboutRouter,
-            ...contactRouter,
-            ...loginRouter,
-          ],
+          children: homePagesRouter,
         },
         {
           path: "/dashboard",

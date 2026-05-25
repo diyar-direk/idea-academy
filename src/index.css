@@ -162,6 +162,10 @@ body::-webkit-scrollbar {
 .c-pointer {
   cursor: pointer;
 }
+.field-error {
+  color: red;
+  font-weight: 600;
+}
 
 @keyframes en-arrow {
   100% {

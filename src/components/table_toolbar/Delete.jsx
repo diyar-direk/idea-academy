@@ -5,7 +5,8 @@ import IconButton from "./../buttons/IconButton";
 import APIClient from "../../utils/ApiClient";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
-import { icons } from "../../constant/icons";
+import { icons } from "../../constants/icons";
+import endPoints from "../../constants/endPoints";
 
 const Delete = ({
   setSelectedItems,
@@ -23,7 +24,7 @@ const Delete = ({
   }, [setSelectedItems]);
 
   const queryclient = useQueryClient();
-  const apiClient = new APIClient(endPoint);
+  const apiClient = new APIClient(`${endPoint}${endPoints.deleteMany}`);
   const handleDelete = useMutation({
     mutationFn: (ids) => apiClient.deleteAll({ ids }),
     onSuccess: () => {

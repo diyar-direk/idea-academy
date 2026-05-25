@@ -1,16 +1,16 @@
-footer {
+footer.home-footer {
   background-color: black;
   padding-block: 30px;
   color: white;
 }
-footer .footer-header {
+footer.home-footer .footer-header {
   margin-bottom: 15px;
   gap: 20px;
 }
-footer .footer-header > div {
+footer.home-footer .footer-header > div {
   flex: 250px;
 }
-footer .footer-header > div h1 {
+footer.home-footer .footer-header > div h1 {
   text-transform: capitalize;
   line-height: 1;
   color: var(--main-color);
@@ -19,12 +19,12 @@ footer .footer-header > div h1 {
   letter-spacing: 1px;
   opacity: 0.7;
 }
-footer .footer-header > div .socials {
+footer.home-footer .footer-header > div .socials {
   display: flex;
   gap: 10px;
   margin-top: 15px;
 }
-footer .footer-header > div .socials a {
+footer.home-footer .footer-header > div .socials a {
   width: 25px;
   height: 25px;
   display: flex;
@@ -35,13 +35,13 @@ footer .footer-header > div .socials a {
   color: #777777;
   font-size: 15px;
 }
-footer .footer-header > div p {
+footer.home-footer .footer-header > div p {
   margin-top: 10px;
   font-size: 14px;
   color: #777777;
 }
 
-footer .footer-header > div h2 {
+footer.home-footer .footer-header > div h2 {
   text-transform: capitalize;
   line-height: 1;
   color: #888;
@@ -50,20 +50,20 @@ footer .footer-header > div h2 {
   margin-bottom: 10px;
 }
 
-footer .footer-header > div.links {
+footer.home-footer .footer-header > div.links {
   display: flex;
   flex-direction: column;
 }
-footer .footer-header > div.links a {
+footer.home-footer .footer-header > div.links a {
   color: #ccc;
   text-transform: capitalize;
   line-height: 1.5;
 }
-footer .footer-header > div.links a:hover {
+footer.home-footer .footer-header > div.links a:hover {
   color: var(--main-color);
   transform: translateX(10px);
 }
-footer .footer-header .info {
+footer.home-footer .footer-header .info {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -71,11 +71,11 @@ footer .footer-header .info {
   text-transform: capitalize;
   font-size: 16px;
 }
-footer .footer-header .info svg {
+footer.home-footer .footer-header .info svg {
   font-size: 90%;
   color: #555;
 }
-footer > p {
+footer.home-footer > p {
   border-top: solid 1px var(--border-color);
   padding-top: 10px;
   text-align: center;

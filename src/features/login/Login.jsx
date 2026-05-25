@@ -5,8 +5,13 @@ import * as Yup from "yup";
 import "./login.css";
 import axiosInstance from "../../utils/axios";
 import endPoints from "./../../constants/endPoints";
+import AuthHelper from "../../utils/authHelper";
+import { useNavigate } from "react-router";
+import { pagesRouters } from "../../constants/pagesRouters";
 
 const Login = () => {
+  const setToken = new AuthHelper().setToken;
+  const nav = useNavigate();
   const formik = useFormik({
     initialValues: { username: "", password: "" },
     validationSchema: Yup.object({
@@ -15,7 +20,8 @@ const Login = () => {
     }),
     onSubmit: async (v) => {
       const { data } = await axiosInstance.post(endPoints.login, v);
-      console.log(data);
+      setToken(data?.accessToken);
+      nav(pagesRouters.dashboard.statistics, { replace: true });
     },
   });
 

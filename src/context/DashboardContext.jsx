@@ -3,16 +3,16 @@ import { createContext, useContext, useEffect, useState } from "react";
 const DashboardContext = createContext();
 
 export const DashboardProvider = ({ children, value }) => {
-  const [page_size, setLimit] = useState(
+  const [limit, setLimit] = useState(
     parseInt(localStorage.getItem("limit")) || 10,
   );
 
   useEffect(() => {
-    localStorage.setItem("limit", page_size);
-  }, [page_size]);
+    localStorage.setItem("limit", limit);
+  }, [limit]);
 
   return (
-    <DashboardContext.Provider value={{ ...value, page_size, setLimit }}>
+    <DashboardContext.Provider value={{ ...value, limit, setLimit }}>
       {children}
     </DashboardContext.Provider>
   );
