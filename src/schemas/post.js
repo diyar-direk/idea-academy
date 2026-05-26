@@ -7,10 +7,9 @@ export const postsSchema = yup.object({
 
   image: yup
     .mixed()
-    .notRequired()
+    .nullable()
     .test("fileType", "must be a valid image file", (value) => {
-      if (!value) return false;
-
+      if (!value) return true;
       const allowedTypes = [
         "image/jpeg",
         "image/png",
@@ -18,7 +17,7 @@ export const postsSchema = yup.object({
         "image/webp",
       ];
 
-      return allowedTypes.includes(value.type);
+      return allowedTypes.includes(value?.file?.type);
     }),
 
   video: yup
@@ -38,6 +37,6 @@ export const postsSchema = yup.object({
         "video/mov",
       ];
 
-      return allowedVideoTypes.includes(value.type);
+      return allowedVideoTypes.includes(value?.file?.type);
     }),
 });

@@ -8,6 +8,8 @@ import endPoints from "../../../../../constants/endPoints";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
+import { postsSchema } from "./../../../../../schemas/post";
+import UploadPhoto from "../../../../../components/inputs/UploadPhoto";
 const api = new APIClient(endPoints.posts);
 
 const AddPost = () => {
@@ -16,8 +18,19 @@ const AddPost = () => {
 
   const handleAdd = useMutation({
     mutationFn: (v) => {
-      delete v.confirmPassword;
-      api.addData(v);
+      const formData = new FormData();
+      formData.append("title", v.title);
+      formData.append("content", v.content);
+      if (v.image?.file) {
+        formData.append("image", v.image?.file);
+      }
+      if (v.video) {
+        formData.append(
+          "video",
+          typeof v.video === "object" ? v.video?.file : v.video,
+        );
+      }
+      api.addData(formData);
     },
     onSuccess: () => {
       query.invalidateQueries([endPoints.posts]);
@@ -26,14 +39,8 @@ const AddPost = () => {
   });
 
   const formik = useFormik({
-    initialValues: { confirmPassword: "", password: "", username: "" },
-    validationSchema: Yup.object({
-      username: Yup.string().required().min(3).max(20),
-      password: Yup.string().required().min(6).max(30),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref("password"), null])
-        .required(),
-    }),
+    initialValues: { title: "", content: "", image: null, video: "" },
+    validationSchema: postsSchema,
     onSubmit: handleAdd.mutate,
   });
 
@@ -45,33 +52,60 @@ const AddPost = () => {
           className="dashboard-form-container"
           onSubmit={formik.handleSubmit}
         >
+          <div className="dashboard-form flex-form">
+            <Input
+              label="title"
+              placeholder="enter title"
+              errorText={formik.errors.title}
+              value={formik.values.title}
+              onChange={formik.handleChange}
+              name="title"
+              containerProps={{ className: "w-100" }}
+            />
+            <Input
+              label="content"
+              placeholder="enter content"
+              errorText={formik.errors.content}
+              value={formik.values.content}
+              onChange={formik.handleChange}
+              name="content"
+              elementType="textarea"
+              rows={4}
+              containerProps={{ className: "w-100" }}
+            />
+          </div>
           <div className="dashboard-form">
-            <Input
-              label="username"
-              placeholder="enter username"
-              errorText={formik.errors.username}
-              value={formik.values.username}
-              onChange={formik.handleChange}
-              name="username"
+            <UploadPhoto
+              errorText={formik.errors.image}
+              notRequired
+              accept="image/*"
+              name="image"
+              title="image"
+              onChange={(i) => formik.setFieldValue("image", i)}
+              value={formik.values.image}
             />
-            <Input
-              label="password"
-              placeholder="enter password"
-              errorText={formik.errors.password}
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              type="password"
-              name="password"
+            <UploadPhoto
+              errorText={formik.errors.video}
+              notRequired
+              accept="video/*"
+              name="video"
+              title="video"
+              onChange={(i) => formik.setFieldValue("video", i)}
+              value={formik.values.video}
             />
-            <Input
-              label="confirm password"
-              placeholder="confirm password"
-              errorText={formik.errors.confirmPassword}
-              value={formik.values.confirmPassword}
-              onChange={formik.handleChange}
-              type="password"
-              name="confirmPassword"
-            />
+            {typeof formik.values.video !== "object" && (
+              <Input
+                label="video"
+                placeholder="enter video"
+                errorText={formik.errors.video}
+                value={formik.values.video}
+                onChange={formik.handleChange}
+                name="video"
+                containerProps={{ className: "w-100" }}
+                notRequired
+                type="url"
+              />
+            )}
           </div>
           <Button className="submit-btn" type="submit">
             save

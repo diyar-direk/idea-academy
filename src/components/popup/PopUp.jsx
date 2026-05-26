@@ -9,7 +9,7 @@ import IconButton from "../buttons/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./popups.css";
 import { useTranslation } from "react-i18next";
-import { icons } from "../../constant/icons";
+import { icons } from "../../constants/icons";
 
 /**
  * @param {divProps & React.HTMLAttributes<HTMLDivElement>} props

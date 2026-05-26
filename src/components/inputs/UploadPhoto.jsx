@@ -5,7 +5,7 @@ import PopUp from "../popup/PopUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCameraRetro } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
-import { icons } from "./../../constant/icons";
+import { icons } from "./../../constants/icons";
 
 function UploadPhoto({
   onChange = () => {},
@@ -13,7 +13,7 @@ function UploadPhoto({
   name = "",
   errorText,
   value,
-  accept = "image/png, image/jpeg, image/jpg",
+  accept = "image/*,video/*",
   defaultImage,
   notRequired,
   className,
@@ -22,12 +22,37 @@ function UploadPhoto({
   const [isDragging, setIsDragging] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const { t } = useTranslation();
+
+  const isVideo = useMemo(() => {
+    if (value?.file?.type) {
+      return value.file.type.startsWith("video/");
+    }
+
+    if (value?.url) {
+      return /\.(mp4|webm|ogg|mov|avi|mkv)$/i.test(value.url);
+    }
+
+    return false;
+  }, [value]);
+
   const handleChange = useCallback(
     (e) => {
       const file = e.target.files[0];
       if (!file) return;
+
+      const isImage = file.type.startsWith("image/");
+      const isVideo = file.type.startsWith("video/");
+
+      if (!isImage && !isVideo) return;
+
       const url = URL.createObjectURL(file);
-      onChange({ name: e.target.name, file, url });
+
+      onChange({
+        name: e.target.name,
+        file,
+        url,
+      });
     },
     [onChange],
   );
@@ -35,10 +60,23 @@ function UploadPhoto({
   const handleDrop = useCallback(
     (e) => {
       e.preventDefault();
+
       const file = e.dataTransfer.files[0];
       if (!file) return;
+
+      const isImage = file.type.startsWith("image/");
+      const isVideo = file.type.startsWith("video/");
+
+      if (!isImage && !isVideo) return;
+
       const url = URL.createObjectURL(file);
-      onChange({ name, file, url });
+
+      onChange({
+        name,
+        file,
+        url,
+      });
+
       setIsDragging(false);
     },
     [onChange, name],
@@ -46,6 +84,7 @@ function UploadPhoto({
 
   const handleRemove = useCallback(() => {
     onChange("");
+    setOpen(false);
   }, [onChange]);
 
   useEffect(() => {
@@ -58,15 +97,23 @@ function UploadPhoto({
     };
   }, [value, revoke]);
 
-  const handleDragEnter = useCallback(() => setIsDragging(true), []);
-  const handleDragLeave = useCallback(() => setIsDragging(false), []);
+  const handleDragEnter = useCallback(() => {
+    setIsDragging(true);
+  }, []);
+
+  const handleDragLeave = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
     setIsDragging(true);
   }, []);
 
   const handleClick = useCallback(() => {
-    if (value?.url) setOpen(true);
+    if (value?.url) {
+      setOpen(true);
+    }
   }, [value?.url]);
 
   const labelClassName = useMemo(
@@ -76,17 +123,18 @@ function UploadPhoto({
 
   const uploadClassName = useMemo(
     () =>
-      `upload-frame ${isDragging ? "dragging" : ""} ${errorText ? "error" : ""}`,
+      `upload-frame ${isDragging ? "dragging" : ""} ${
+        errorText ? "error" : ""
+      }`,
     [isDragging, errorText],
   );
-
-  const { t } = useTranslation();
 
   return (
     <div className={`${className || ""} upload-file font-color`}>
       <label
         className={labelClassName}
-        htmlFor={name + (value?.url ? "disabled" : "")}>
+        htmlFor={name + (value?.url ? "disabled" : "")}
+      >
         {title}
       </label>
 
@@ -97,10 +145,12 @@ function UploadPhoto({
               onClick={handleRemove}
               className="remove-btn"
               btnType="delete"
-              type="button">
+              type="button"
+            >
               <FontAwesomeIcon icon={icons.close} />
             </Button>
           )}
+
           <label
             htmlFor={name + (value?.url ? "disabled" : "")}
             className="upload-label"
@@ -108,25 +158,35 @@ function UploadPhoto({
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
-            onClick={handleClick}>
+            onClick={handleClick}
+          >
             {value?.url || defaultImage ? (
-              <>
-                <img
-                  className="img-bg"
-                  src={value?.url || defaultImage}
-                  alt=""
-                />
-                <img
+              isVideo ? (
+                <video
                   className="img-main"
                   src={value?.url || defaultImage}
-                  alt=""
+                  controls
                 />
-              </>
+              ) : (
+                <>
+                  <img
+                    className="img-bg"
+                    src={value?.url || defaultImage}
+                    alt="preview"
+                  />
+                  <img
+                    className="img-main"
+                    src={value?.url || defaultImage}
+                    alt="preview"
+                  />
+                </>
+              )
             ) : (
               <div
-                className={`upload-placeholder ${isDragging ? "dragging" : ""}`}>
+                className={`upload-placeholder ${isDragging ? "dragging" : ""}`}
+              >
                 {isDragging ? (
-                  <h1> {t("media_types.drop")} </h1>
+                  <h1>{t("media_types.drop")}</h1>
                 ) : (
                   <>
                     <h1>
@@ -144,6 +204,7 @@ function UploadPhoto({
           <label htmlFor={name}>
             <FontAwesomeIcon icon={faCameraRetro} />
           </label>
+
           <input
             onChange={handleChange}
             id={name}
@@ -152,6 +213,7 @@ function UploadPhoto({
             hidden
             accept={accept}
           />
+
           {errorText && <span className="field-error">{errorText}</span>}
         </div>
       </div>
@@ -159,19 +221,26 @@ function UploadPhoto({
       <PopUp
         isOpen={open}
         onClose={() => setOpen(false)}
-        className="upload-popup">
+        className="upload-popup"
+      >
         <div className="popup-body">
-          <img
-            src={value?.url || ""}
-            alt=""
-            className="popup-img"
-            onClick={() => window.open(value?.url, "_blank")}
-          />
+          {isVideo ? (
+            <video src={value?.url || ""} className="popup-img" controls />
+          ) : (
+            <img
+              src={value?.url || ""}
+              alt="preview"
+              className="popup-img"
+              onClick={() => window.open(value?.url, "_blank")}
+            />
+          )}
+
           <Button
             btnStyleType="outlined"
             onClick={() => setOpen(false)}
             btnType="delete"
-            type="button">
+            type="button"
+          >
             {t("close")}
           </Button>
         </div>

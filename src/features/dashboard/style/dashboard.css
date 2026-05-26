@@ -113,6 +113,10 @@
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 10px 20px;
 }
+.dashboard-form.flex-form {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .dashboard-form-container .submit-btn {
   justify-self: end;

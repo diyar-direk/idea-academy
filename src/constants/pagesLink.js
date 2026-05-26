@@ -58,7 +58,7 @@ export const dashboardLinks = [
         icon: icons.posts,
       },
       {
-        title: "add event",
+        title: "add post",
         to: pagesRouters.dashboard.posts.add,
         icon: icons.add,
       },
