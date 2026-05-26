@@ -11,7 +11,7 @@ import { icons } from "./../../../../constants/icons";
 const TopHeader = () => {
   return (
     <div className="top-header">
-      <Link className="logo">
+      <Link className="logo" to={"/"}>
         <FontAwesomeIcon icon={faGraduationCap} /> idea academy
       </Link>
       <article>

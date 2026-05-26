@@ -4,6 +4,7 @@ const endPoints = {
   deleteMany: "delete-many",
   logout: "Users/logout",
   me: "Users/me",
+  posts: "Posts/",
 };
 
 export default endPoints;

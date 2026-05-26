@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../utils/ApiClient";
-import DBkeys from "../constant/DBkeys";
+import DBkeys from "../constants/DBkeys";
 
 export const useInfiniteFetch = ({ endPoint, enabled = true, ...params }) => {
   const apiClient = new APIClient(endPoint);

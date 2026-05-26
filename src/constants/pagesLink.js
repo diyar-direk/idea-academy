@@ -15,8 +15,8 @@ export const pagesLinks = [
     to: pagesRouters.contact,
   },
   {
-    title: "events",
-    to: pagesRouters.events.page,
+    title: "posts",
+    to: pagesRouters.posts.page,
   },
   {
     title: "courses",
@@ -48,18 +48,18 @@ export const dashboardLinks = [
     ],
   },
   {
-    title: "events",
-    to: pagesRouters.dashboard.events.page,
-    icon: icons.events,
+    title: "posts",
+    to: pagesRouters.dashboard.posts.page,
+    icon: icons.posts,
     children: [
       {
-        title: "events",
-        to: pagesRouters.dashboard.events.page,
-        icon: icons.events,
+        title: "posts",
+        to: pagesRouters.dashboard.posts.page,
+        icon: icons.posts,
       },
       {
         title: "add event",
-        to: pagesRouters.dashboard.events.add,
+        to: pagesRouters.dashboard.posts.add,
         icon: icons.add,
       },
     ],

@@ -2,8 +2,8 @@ export const pagesRouters = {
   home: "/",
   about: "/about",
   contact: "/contact",
-  events: {
-    page: "/events",
+  posts: {
+    page: "/posts",
   },
   courses: {
     page: "/courses",
@@ -16,9 +16,9 @@ export const pagesRouters = {
       add: "/dashboard/users/add",
       updatePassword: (id = ":id") => `/dashboard/users/${id}`,
     },
-    events: {
-      page: "/dashboard/events",
-      add: "/dashboard/events/add",
+    posts: {
+      page: "/dashboard/posts",
+      add: "/dashboard/posts/add",
     },
     courses: {
       page: "/dashboard/courses",

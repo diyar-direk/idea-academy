@@ -16,18 +16,19 @@ import endPoints from "../constants/endPoints";
 import AuthHelper from "../utils/authHelper";
 
 const AuthContext = createContext();
+
+const authHelper = new AuthHelper();
 export const AuthProvider = () => {
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   const query = useQueryClient();
-  const token = new AuthHelper().getToken();
-
   const isRefreshing = useRef(false);
   const failedQueue = useRef([]);
 
   const logout = useCallback(async () => {
     await axiosInstance.post(endPoints.logout);
     query.clear();
+    authHelper.clearAllTokens();
     nav("/");
   }, [query, nav]);
 
@@ -42,6 +43,8 @@ export const AuthProvider = () => {
   useEffect(() => {
     const requestInterceptor = axiosInstance.interceptors.request.use(
       (config) => {
+        const token = authHelper.getToken();
+        if (token) config.headers["Authorization"] = `Bearer ${token}`;
         if (config.method !== "get") setLoading(true);
         return config;
       },
@@ -96,6 +99,7 @@ export const AuthProvider = () => {
             axiosInstance.defaults.headers.common["Authorization"] =
               `Bearer ${newToken}`;
             originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
+            authHelper.setToken(newToken);
 
             processQueue(null, newToken);
 
@@ -125,11 +129,11 @@ export const AuthProvider = () => {
     queryKey: [endPoints.me],
     queryFn: async () => {
       const { data } = await axiosInstance.get(endPoints.me);
-      return data || null;
+      return data.data || null;
     },
     retry: false,
     refetchOnWindowFocus: false,
-    enabled: Boolean(token),
+    enabled: authHelper.isAuthenticated(),
   });
 
   if (isLoading) return <Loading />;

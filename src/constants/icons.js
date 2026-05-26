@@ -26,6 +26,6 @@ export const icons = {
   view: faEye,
   email: faEnvelope,
   dashboard: faChartSimple,
-  events: faCalendarDays,
+  posts: faCalendarDays,
   courses: faBookOpen,
 };

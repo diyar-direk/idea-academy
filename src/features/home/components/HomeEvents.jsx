@@ -53,7 +53,7 @@ const HomeEvents = () => {
           </div>
         </div>
       </div>
-      <Link to={pagesRouters.events}>
+      <Link to={pagesRouters.posts.page}>
         <Button className="home-btn"> explorer all events </Button>
       </Link>
     </section>
