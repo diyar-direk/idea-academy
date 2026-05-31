@@ -45,6 +45,7 @@ export const AuthProvider = () => {
       (config) => {
         const token = authHelper.getToken();
         if (token) config.headers["Authorization"] = `Bearer ${token}`;
+
         if (config.method !== "get") setLoading(true);
         return config;
       },

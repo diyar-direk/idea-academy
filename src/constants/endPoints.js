@@ -5,6 +5,7 @@ const endPoints = {
   logout: "Users/logout",
   me: "Users/me",
   posts: "Posts/",
+  refreshToken: "Users/refresh-token",
 };
 
 export default endPoints;

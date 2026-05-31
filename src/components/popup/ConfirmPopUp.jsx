@@ -40,7 +40,7 @@ const ConfirmPopUp = ({
     <div className="overlay" role="dialog" {...props} onClick={onClose}>
       <div className="popup confirm-popup" onClick={(e) => e.stopPropagation()}>
         <article className="close">
-          <h1>{heading || t("common.are_you_sure")}</h1>
+          <h1>{heading || t("are_you_sure")}</h1>
           <FontAwesomeIcon icon={icons.close} onClick={onClose} />
         </article>
         <article className="undone">{undoneText}</article>
@@ -52,7 +52,7 @@ const ConfirmPopUp = ({
             btnStyleType="transparent"
             {...closeButtonProps}
           >
-            {cancelText || t("common.cancel")}
+            {cancelText || t("cancel")}
           </Button>
           <Button
             type="button"
@@ -60,7 +60,7 @@ const ConfirmPopUp = ({
             btnType="delete"
             {...confirmButtonProps}
           >
-            {confirmText || t("common.confirm")}
+            {confirmText || t("confirm")}
           </Button>
         </div>
       </div>

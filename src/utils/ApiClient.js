@@ -38,9 +38,9 @@ class APIClient {
 
     return {
       data: d || data,
-      totalCount: total || 0,
+      [DBkeys.totalCount]: total || 0,
       limit,
-      total_pages: total_pages || Math.floor(total / limit) || 1,
+      [DBkeys.totalPages]: total_pages || Math.floor(total / limit) || 1,
     };
   };
 
@@ -52,7 +52,7 @@ class APIClient {
     await axiosInstance.delete(this.endPoint, { data: { ids } });
   };
   deleteOne = async (id) => {
-    await axiosInstance.delete(`${this.endPoint}/${id}`);
+    await axiosInstance.delete(`${this.endPoint}${id}`);
   };
   addData = async (d) => {
     const { data } = await axiosInstance.post(this.endPoint, d);

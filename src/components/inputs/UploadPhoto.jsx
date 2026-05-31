@@ -15,6 +15,7 @@ function UploadPhoto({
   value,
   accept = "image/*,video/*",
   defaultImage,
+  defaultVideo,
   notRequired,
   className,
   revoke = true,
@@ -160,11 +161,11 @@ function UploadPhoto({
             onDrop={handleDrop}
             onClick={handleClick}
           >
-            {value?.url || defaultImage ? (
-              isVideo ? (
+            {value?.url || defaultImage || defaultVideo ? (
+              isVideo || defaultVideo ? (
                 <video
                   className="img-main"
-                  src={value?.url || defaultImage}
+                  src={value?.url || defaultVideo}
                   controls
                 />
               ) : (

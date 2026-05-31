@@ -19,6 +19,7 @@ export const pagesRouters = {
     posts: {
       page: "/dashboard/posts",
       add: "/dashboard/posts/add",
+      update: (id = ":id") => `/dashboard/posts/${id}`,
     },
     courses: {
       page: "/dashboard/courses",

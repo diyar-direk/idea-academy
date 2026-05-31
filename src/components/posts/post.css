@@ -1,10 +1,25 @@
 .post-card {
-  background-color: var(--section-color);
+  background-color: var(--body-color);
   border-radius: 10px;
   overflow: hidden;
 }
-.post-card iframe,
-.post-card img {
+
+.post-card .post-actions {
+  display: flex;
+  gap: 5px;
+  padding: 8px;
+  justify-content: flex-end;
+}
+
+.post-card .cover {
+  background-color: var(--aside-color);
+  display: flex;
+}
+.post-card .cover img {
+  cursor: pointer;
+}
+.post-card .cover iframe,
+.post-card .cover img {
   width: 100%;
   height: 300px;
   object-fit: cover;
@@ -23,11 +38,91 @@
   font-size: 15px;
   font-weight: 500;
 }
-.post-card > div > div {
-  opacity: 0.5;
+.post-card > div .time {
   font-size: 13px;
-  margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.post-card > div .post-footer {
+  opacity: 0.5;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.post-card > div .post-footer a:hover {
+  color: blue;
+  opacity: 1;
+}
+.posts-search {
+  margin-bottom: 10px;
+}
+
+.posts-search .total-posts {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.posts-search .total-posts::before {
+  content: attr(data-count);
+  color: var(--main-color);
+}
+
+.posts-search .filters-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.posts-search .filters-container label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--body-color);
+  border: solid 1px var(--border-color);
+  border-radius: 20px;
+  padding: 6px 10px;
+  flex: 1;
+  cursor: text;
+}
+.posts-search .filters-container label input {
+  background-color: transparent;
+  border: none;
+  flex: 1;
+}
+
+.posts-search .filters-container .sort {
+  position: relative;
+}
+
+.posts-search .filters-container h3 {
+  background-color: var(--body-color);
+  padding-inline: 10px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.posts-search .filters-container .sort .sort-options {
+  position: absolute;
+  background-color: var(--body-color);
+  width: 100%;
+  z-index: 3;
+  top: calc(100% + 2px);
+  overflow: hidden;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+.posts-search .filters-container .sort .sort-options h4 {
+  opacity: 0.7;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.posts-search .filters-container .sort .sort-options h4:hover,
+.posts-search .filters-container .sort .sort-options h4.active {
+  background-color: var(--aside-color);
+  opacity: 1;
 }
