@@ -19,6 +19,27 @@
 .dashboard-header .top-header .logo svg {
   color: var(--main-color);
 }
+
+.dashboard-header .top-header .language-options {
+  position: absolute;
+  background-color: #253647;
+  top: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  animation: fadeIn 0.3s;
+}
+.dashboard-header .top-header .language-options p {
+  line-height: 1.3;
+  padding: 3px 8px;
+  font-size: 15px;
+  border-bottom: solid 1px #334557;
+  cursor: pointer;
+}
+.dashboard-header .top-header .language-options p:hover,
+.dashboard-header .top-header .language-options p.active {
+  background-color: #334557;
+}
+
 .dashboard-header .top-header article {
   display: flex;
   gap: 10px;

@@ -18,7 +18,6 @@ const PostsSearch = ({ total, sort, setSort, setFilters }) => {
 
   useEffect(() => {
     setFilters({
-      "title[contains]": debouncedValue?.toLowerCase(),
       "content[contains]": debouncedValue?.toLowerCase(),
     });
   }, [debouncedValue, setFilters]);

@@ -1,3 +1,6 @@
+.body-style-posts .post-card {
+  background-color: var(--section-color);
+}
 .post-card {
   background-color: var(--body-color);
   border-radius: 10px;
@@ -50,11 +53,13 @@
   display: flex;
   font-size: 14px;
   justify-content: space-between;
+  border-top: solid 1px var(--border-color);
+  margin-top: 5px;
+  padding-top: 5px;
 }
 
 .post-card > div .post-footer a:hover {
-  color: blue;
-  opacity: 1;
+  color: rgb(0, 153, 255);
 }
 .posts-search {
   margin-bottom: 10px;

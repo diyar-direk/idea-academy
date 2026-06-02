@@ -71,6 +71,7 @@ body {
   background-color: var(--section-color);
   overflow-x: hidden;
   --aside-color: #e7e9eb;
+  color: var(--font-color);
   --hover-color: #094b81;
 }
 body.dark {

@@ -3,8 +3,12 @@ import "./footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { pagesLinks } from "../../constants/pagesLink";
 import { contactInfo } from "./../../constants/contactInfo";
+import { useAuth } from "../../context/AuthContext";
+import { pagesRouters } from "../../constants/pagesRouters";
 
 const Footer = () => {
+  const { user } = useAuth();
+
   return (
     <footer className="container home-footer">
       <div className="footer-header flex wrap">
@@ -35,6 +39,11 @@ const Footer = () => {
               {link.title}
             </Link>
           ))}
+          {user ? (
+            <Link to={pagesRouters.dashboard.statistics}>dashboard</Link>
+          ) : (
+            <Link to={pagesRouters.login}>login</Link>
+          )}
         </div>
 
         <div className="info-container flex flex-direction gap-10">

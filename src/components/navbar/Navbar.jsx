@@ -8,9 +8,11 @@ import { faLanguage, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { pagesRouters } from "../../constants/pagesRouters";
 import { pagesLinks } from "../../constants/pagesLink";
 import useDarkMode from "./../../hooks/useDarkMode";
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
   const { changeMode } = useDarkMode();
+  const { user } = useAuth();
 
   return (
     <header className="home-header gap-10 container">
@@ -28,8 +30,11 @@ const Navbar = () => {
             {link.title}
           </NavLink>
         ))}
-        <NavLink to={pagesRouters.login}>login</NavLink>
-        <NavLink to={pagesRouters.dashboard.statistics}>dashboard</NavLink>
+        {user ? (
+          <NavLink to={pagesRouters.dashboard.statistics}>dashboard</NavLink>
+        ) : (
+          <NavLink to={pagesRouters.login}>login</NavLink>
+        )}
       </nav>
 
       <IconButton title="language" style={{ color: "var(--main-color)" }}>
