@@ -4,15 +4,21 @@ import Logo from "../../assets/logo.png";
 import IconButton from "./../buttons/IconButton";
 import Button from "./../buttons/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLanguage, faMoon } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBarsStaggered,
+  faLanguage,
+  faMoon,
+} from "@fortawesome/free-solid-svg-icons";
 import { pagesRouters } from "../../constants/pagesRouters";
 import { pagesLinks } from "../../constants/pagesLink";
 import useDarkMode from "./../../hooks/useDarkMode";
 import { useAuth } from "../../context/AuthContext";
+import { useClickOutside } from "./../../hooks/useClickOutside";
 
 const Navbar = () => {
   const { changeMode } = useDarkMode();
   const { user } = useAuth();
+  const { isOpen, toggleOpen, ref } = useClickOutside();
 
   return (
     <header className="home-header gap-10 container">
@@ -24,30 +30,36 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <nav className="flex-1">
-        {pagesLinks?.map((link) => (
-          <NavLink key={link.to} to={link.to}>
-            {link.title}
-          </NavLink>
-        ))}
-        {user ? (
-          <NavLink to={pagesRouters.dashboard.statistics}>dashboard</NavLink>
-        ) : (
-          <NavLink to={pagesRouters.login}>login</NavLink>
-        )}
-      </nav>
+      <div className="flex gap-10 flex-1 items-container" ref={ref}>
+        <nav className={`flex-1 ${isOpen ? " active" : ""}`}>
+          {pagesLinks?.map((link) => (
+            <NavLink key={link.to} to={link.to}>
+              {link.title}
+            </NavLink>
+          ))}
+          {user ? (
+            <NavLink to={pagesRouters.dashboard.statistics}>dashboard</NavLink>
+          ) : (
+            <NavLink to={pagesRouters.login}>login</NavLink>
+          )}
+        </nav>
 
-      <IconButton title="language" style={{ color: "var(--main-color)" }}>
-        <FontAwesomeIcon icon={faLanguage} />
-      </IconButton>
+        <IconButton title="language" style={{ color: "var(--main-color)" }}>
+          <FontAwesomeIcon icon={faLanguage} />
+        </IconButton>
 
-      <IconButton title="mood" onClick={changeMode}>
-        <FontAwesomeIcon icon={faMoon} />
-      </IconButton>
+        <IconButton title="mood" onClick={changeMode}>
+          <FontAwesomeIcon icon={faMoon} />
+        </IconButton>
 
-      <Link to={pagesRouters.contact}>
-        <Button btnStyleType="contained">contact us</Button>
-      </Link>
+        <IconButton title="menu" className="mobile-menu" onClick={toggleOpen}>
+          <FontAwesomeIcon icon={faBarsStaggered} />
+        </IconButton>
+
+        <Link to={pagesRouters.contact} className="contact-btn">
+          <Button btnStyleType="contained">contact us</Button>
+        </Link>
+      </div>
     </header>
   );
 };

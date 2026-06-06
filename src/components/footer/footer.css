@@ -79,4 +79,100 @@ footer.home-footer > p {
   border-top: solid 1px var(--border-color);
   padding-top: 10px;
   text-align: center;
+  opacity: 0.5;
+}
+@media (max-width: 1000px) {
+  footer.home-footer .footer-header > div h2,
+  footer.home-footer .footer-header > div h1 {
+    font-size: 20px;
+  }
+  footer.home-footer .footer-header > div p,
+  footer.home-footer .footer-header > div.links a {
+    font-size: 13px;
+  }
+  footer.home-footer .footer-header .info,
+  footer.home-footer > p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  footer.home-footer {
+    padding-block: 20px;
+  }
+  footer.home-footer .footer-header > div h2,
+  footer.home-footer .footer-header > div h1 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  footer.home-footer .footer-header > div .socials {
+    margin-top: 10px;
+  }
+  footer.home-footer .footer-header > div .socials a {
+    width: 23px;
+    height: 23px;
+    font-size: 14px;
+  }
+  footer.home-footer .footer-header > div p,
+  footer.home-footer .footer-header > div.links a {
+    font-size: 12px;
+  }
+  footer.home-footer .footer-header > div {
+    flex: 100%;
+  }
+  footer.home-footer .footer-header {
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  footer.home-footer .footer-header > div.links {
+    border-block: solid 1px #8a8a8a23;
+    padding-block: 10px;
+  }
+  footer.home-footer .footer-header .info,
+  footer.home-footer > p {
+    font-size: 13px;
+    gap: 3px;
+  }
+  footer.home-footer .footer-header > div {
+    gap: 5px;
+  }
+}
+@media (max-width: 400px) {
+  footer.home-footer {
+    padding-block: 10px;
+  }
+  footer.home-footer .footer-header > div h2,
+  footer.home-footer .footer-header > div h1 {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+  footer.home-footer .footer-header > div .socials {
+    gap: 5px;
+  }
+  footer.home-footer .footer-header > div .socials a {
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+  }
+  footer.home-footer .footer-header > div p,
+  footer.home-footer .footer-header > div.links a {
+    font-size: 11px;
+    margin: 0;
+  }
+
+  footer.home-footer .footer-header {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  footer.home-footer .footer-header > div.links {
+    border-block: solid 1px #8a8a8a23;
+    padding-block: 8px;
+  }
+  footer.home-footer .footer-header .info,
+  footer.home-footer > p {
+    font-size: 12px;
+  }
+  footer.home-footer .footer-header > div {
+    gap: 3px;
+  }
 }

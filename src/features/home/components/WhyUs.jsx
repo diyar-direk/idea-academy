@@ -14,7 +14,7 @@ const WhyUs = () => {
           "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam,"
         }
       />
-      <div className="cards-container">
+      <div className="cards-container grid-3">
         <div className="card">
           <div className="icon">
             <FontAwesomeIcon icon={faCode} />

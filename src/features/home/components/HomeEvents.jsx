@@ -14,7 +14,7 @@ const api = new APIClient(endPoints.posts);
 const HomeEvents = () => {
   const { data } = useQuery({
     queryKey: [endPoints.posts],
-    queryFn: () => api.getAll({ limit: 3 }),
+    queryFn: () => api.getAll({ limit: 3, sort: `-${DBkeys.createdAt}` }),
   });
 
   if (!data?.totalCount) return;

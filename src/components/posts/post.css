@@ -131,3 +131,129 @@
   background-color: var(--aside-color);
   opacity: 1;
 }
+
+@media (max-width: 1000px) {
+  .posts-search .total-posts {
+    font-size: 22px;
+  }
+  .posts-search .filters-container label {
+    padding: 5px 10px;
+  }
+  .posts-search .filters-container h3 {
+    font-size: 15px;
+  }
+  .posts-search .filters-container .sort .sort-options h4 {
+    font-size: 13px;
+  }
+  .post-card > div h2 {
+    font-size: 20px;
+  }
+  .post-card > div p {
+    font-size: 14px;
+  }
+  .post-card > div .post-footer {
+    font-size: 13px;
+  }
+  .post-card > div .time {
+    font-size: 12px;
+  }
+}
+@media (max-width: 800px) {
+  .posts-search .total-posts {
+    font-size: 20px;
+  }
+  .posts-search .filters-container label {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+  .posts-search .filters-container h3 {
+    font-size: 14px;
+  }
+  .posts-search .filters-container .sort .sort-options h4 {
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+  .post-card > div h2 {
+    font-size: 17px;
+  }
+  .post-card > div p {
+    font-size: 13px;
+  }
+  .post-card > div .post-footer {
+    font-size: 12px;
+    margin-top: 2px;
+    padding-top: 0px;
+  }
+  .post-card > div .time {
+    font-size: 11px;
+  }
+  .post-card > div {
+    padding: 15px;
+  }
+  .posts-search .filters-container label input {
+    font-size: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .posts-search .total-posts {
+    font-size: 18px;
+  }
+  .posts-search .filters-container label {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+  .posts-search .filters-container h3 {
+    font-size: 13px;
+  }
+  .posts-search .filters-container .sort .sort-options h4 {
+    font-size: 12px;
+    padding: 2px 6px;
+  }
+  .post-card > div h2 {
+    font-size: 15px;
+  }
+  .post-card > div p {
+    font-size: 12px;
+  }
+  .post-card > div .post-footer {
+    font-size: 12px;
+  }
+  .post-card > div {
+    padding: 10px;
+  }
+  .posts-search .filters-container label input {
+    font-size: 11px;
+  }
+}
+@media (max-width: 400px) {
+  .posts-search .filters-container {
+    gap: 6px;
+  }
+  .posts-search .total-posts {
+    font-size: 16px;
+  }
+  .posts-search .filters-container label {
+    padding: 3px 7px;
+  }
+  .posts-search .filters-container .sort .sort-options h4 {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+  .post-card > div h2 {
+    font-size: 14px;
+  }
+  .post-card > div p {
+    font-size: 11px;
+  }
+
+  .post-card > div {
+    padding: 8px;
+  }
+  .posts-search .filters-container label input {
+    font-size: 10px;
+  }
+  .post-card .cover iframe,
+  .post-card .cover img {
+    height: 270px;
+  }
+}

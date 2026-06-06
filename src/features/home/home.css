@@ -3,6 +3,10 @@
   min-height: calc(90vh - 80px);
   gap: 50px;
   align-items: center;
+  flex-wrap: wrap-reverse;
+}
+.landing > div {
+  flex: 300px;
 }
 
 .landing .img img {
@@ -44,24 +48,23 @@
   color: var(--font-color);
   width: 90%;
   margin: auto;
+  flex-wrap: wrap;
 }
 .landing .landing-text .statistics article {
   text-align: center;
+  text-transform: uppercase;
+  font-size: 15px;
 }
 .landing .landing-text .statistics h2 {
   color: var(--main-color);
   font-weight: bold;
   font-size: 27px;
+  line-height: 1.3;
 }
 .landing .landing-text .statistics h2::before {
   content: "+";
 }
 
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
-}
 .cards-container .card {
   background-color: var(--section-color);
   padding: 30px;
@@ -109,6 +112,10 @@
   z-index: 1;
   background: url("../../assets/register.jpg") center no-repeat;
   background-size: cover;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .home-register::before {
   content: "";
@@ -144,4 +151,170 @@
 .home-register a:hover {
   background-color: var(--hover-color);
   color: white;
+}
+
+@media (max-width: 1000px) {
+  .landing {
+    gap: 35px;
+  }
+  .landing .landing-text h1 {
+    font-size: 30px;
+  }
+  .landing .landing-text {
+    gap: 20px;
+  }
+  .landing .landing-text p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .landing .landing-text .statistics h2 {
+    font-size: 24px;
+    line-height: 1;
+  }
+  .landing .landing-text .statistics article {
+    font-size: 14px;
+  }
+  .cards-container .card .icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  .cards-container .card h2 {
+    font-size: 20px;
+  }
+  .cards-container .card p {
+    line-height: 1.5;
+    font-size: 15px;
+  }
+  .cards-container .card {
+    padding: 20px;
+  }
+}
+@media (max-width: 800px) {
+  .landing > div {
+    flex: 100%;
+    text-align: center;
+  }
+  .landing .btns-container {
+    justify-content: center;
+  }
+  .cards-container .card .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .cards-container .card h2 {
+    font-size: 18px;
+  }
+  .cards-container .card p {
+    line-height: 1.4;
+    font-size: 14px;
+  }
+  .cards-container .card {
+    padding: 15px;
+  }
+  .home-register h1 {
+    font-size: 33px;
+    max-width: 100%;
+  }
+  .home-register p {
+    max-width: 100%;
+    font-size: 16px;
+  }
+  .home-register a {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing {
+    gap: 20px;
+  }
+  .landing .img img {
+    max-height: 270px;
+  }
+  .landing .landing-text h1 {
+    font-size: 26px;
+  }
+  .landing .landing-text {
+    gap: 15px;
+  }
+  .landing .landing-text h1 span {
+    -webkit-text-stroke: 1px var(--main-color);
+  }
+  .landing .landing-text p {
+    font-size: 13px;
+  }
+  .landing .landing-text .statistics h2 {
+    font-size: 21px;
+  }
+  .landing .landing-text .statistics article {
+    font-size: 13px;
+  }
+  .home-register h1 {
+    font-size: 25px;
+  }
+  .home-register p {
+    font-size: 14px;
+    margin-block: 10px;
+  }
+  .home-register a {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  .landing {
+    gap: 15px;
+  }
+  .landing .img img {
+    max-height: 200px;
+  }
+  .landing .landing-text h1 {
+    font-size: 20px;
+  }
+  .landing .landing-text {
+    gap: 10px;
+  }
+  .landing .landing-text p {
+    font-size: 12px;
+  }
+  .landing .landing-text .statistics h2 {
+    font-size: 19px;
+  }
+  .landing .landing-text .statistics article {
+    font-size: 12px;
+  }
+  .landing .landing-text h1 {
+    -webkit-text-stroke: 0.5px var(--font-color);
+  }
+  .landing .landing-text h1 span {
+    -webkit-text-stroke: 0.7px var(--main-color);
+  }
+  .cards-container .card .icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+  .cards-container .card h2 {
+    font-size: 17px;
+  }
+  .cards-container .card p {
+    line-height: 1.3;
+    font-size: 13px;
+  }
+  .cards-container .card {
+    padding: 10px;
+  }
+  .home-register h1 {
+    font-size: 18px;
+  }
+  .home-register p {
+    font-size: 13px;
+    margin-block: 10px;
+  }
+  .home-register a {
+    padding: 6px;
+    font-size: 12px;
+  }
 }

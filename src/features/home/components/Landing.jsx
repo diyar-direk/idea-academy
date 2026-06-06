@@ -5,7 +5,7 @@ import { pagesRouters } from "./../../../constants/pagesRouters";
 
 const Landing = () => {
   return (
-    <main className="landing container flex">
+    <main className="landing container flex main-padding">
       <div className="landing-text flex-1">
         <h1>
           wlecome to <span>idea academy</span> for computer science
@@ -16,7 +16,7 @@ const Landing = () => {
           sequi vel nulla ea dolorem, ullam laborum optio assumenda officia,
           possimus porro!
         </p>
-        <div className="flex gap-10">
+        <div className="flex gap-10 btns-container">
           <Link to={pagesRouters.courses}>
             <Button btnStyleType="outlined"> explorer courses</Button>
           </Link>
@@ -24,7 +24,7 @@ const Landing = () => {
             <Button> join us</Button>
           </Link>
         </div>
-        <div className="flex statistics">
+        {/* <div className="flex statistics">
           <article>
             <h2>5000</h2>
             students
@@ -37,7 +37,7 @@ const Landing = () => {
             <h2>5000</h2>
             students
           </article>
-        </div>
+        </div> */}
       </div>
       <div className="flex-1 flex img">
         <img src={LandingImg} alt="" />

@@ -19,10 +19,6 @@ body.dark .home-header {
   background-color: var(--aside-color);
 }
 
-.home-header .container {
-  display: flex;
-  gap: 10px;
-}
 .home-header .logo {
   display: flex;
   gap: 10px;
@@ -78,4 +74,111 @@ body.dark .home-header {
 }
 .home-header nav a:not(.active):hover::after {
   width: 100%;
+}
+.home-header .mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .home-header .logo {
+    gap: 8px;
+  }
+  .home-header .logo img {
+    width: 30px;
+    height: 30px;
+  }
+  .home-header .logo h2 {
+    font-size: 15px;
+  }
+  .home-header .logo h4 {
+    font-size: 12px;
+  }
+  .home-header nav a {
+    font-size: 15px;
+  }
+  .home-header {
+    height: 75px;
+  }
+}
+
+@media (max-width: 800px) {
+  .home-header .contact-btn {
+    display: none;
+  }
+  .home-header .logo h2 {
+    font-size: 13px;
+  }
+  .home-header .logo h4 {
+    font-size: 11px;
+  }
+  .home-header .logo img {
+    width: 28px;
+    height: 28px;
+  }
+  .home-header {
+    height: 70px;
+  }
+  .home-header nav a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-header {
+    height: 60px;
+  }
+  .home-header .items-container {
+    justify-content: flex-end;
+  }
+  .home-header .mobile-menu {
+    display: block;
+  }
+  .home-header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--aside-color);
+    flex-direction: column;
+    gap: 0;
+    display: none;
+    padding-inline: var(--container-inline-padding);
+    animation: fadeIn 0.3s;
+  }
+  .home-header nav.active {
+    display: flex;
+  }
+  .home-header .logo h2 {
+    font-size: 12px;
+  }
+  .home-header nav a {
+    width: 100%;
+    font-size: 13px;
+  }
+  .home-header nav a:not(.active)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-header {
+    height: 55px;
+  }
+  .home-header .logo {
+    gap: 6px;
+  }
+  .home-header .logo img {
+    width: 26px;
+    height: 26px;
+  }
+  .home-header .logo h2 {
+    font-size: 11px;
+  }
+  .home-header .logo h4 {
+    font-size: 10px;
+  }
+  .home-header nav a {
+    font-size: 12px;
+    line-height: 1.5;
+  }
 }
