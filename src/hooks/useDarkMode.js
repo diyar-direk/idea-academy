@@ -4,6 +4,7 @@ const useDarkMode = () => {
   const [isDark, setIsDark] = useState(
     JSON.parse(localStorage.getItem("isDark")) || false
   );
+  
   const changeMode = useCallback(() => {
     setIsDark((prev) => {
       const changedValue = !prev;

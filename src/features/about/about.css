@@ -6,13 +6,17 @@
 }
 
 .about-us > div {
-  flex: 400px;
+  flex: 300px;
   color: var(--font-color);
 }
 .about-us .info {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.about-us .info > div {
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .about-us .info h2 {
@@ -23,7 +27,6 @@
   text-transform: capitalize;
   background-color: var(--transparent-color);
   padding: 10px;
-  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -36,15 +39,11 @@
 .about-us .info h2.active .arrow {
   rotate: 180deg;
 }
-.about-us .info h2.active {
-  border-radius: 10px 10px 0 0;
-}
 
 .about-us .info h2.active + article {
   display: flex;
   padding-block: 10px;
   background-color: var(--section-color);
-  border-radius: 0 0 10px 10px;
 }
 
 .about-us .info article {
@@ -71,11 +70,6 @@
   border-radius: 6px;
 }
 
-.features-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
 .features-container > div {
   background-color: var(--body-color);
   color: var(--font-color);
@@ -140,4 +134,99 @@
   font-size: 40px;
   border-bottom: solid 3px var(--transparent-color);
   padding-bottom: 10px;
+}
+
+@media (max-width: 1000px) {
+  .about-us {
+    gap: 30px;
+  }
+  .about-us .info h2 {
+    font-size: 20px;
+  }
+  .about-us .info h2 svg {
+    font-size: 18px;
+  }
+  .about-us .info p {
+    font-size: 14px;
+    max-width: 90%;
+  }
+}
+@media (max-width: 800px) {
+  .about-us,
+  .about-us .info {
+    gap: 10px;
+  }
+  .about-us .info h2 {
+    font-size: 17px;
+    padding: 8px;
+  }
+  .about-us .info p {
+    font-size: 13px;
+    max-width: 93%;
+  }
+  .about-us .info h2 svg {
+    font-size: 16px;
+  }
+  .about-us .info article {
+    gap: 5px;
+  }
+  .about-us .img img {
+    max-height: 350px;
+  }
+  .features-container > div {
+    padding: 15px;
+  }
+  .features-container > div svg {
+    font-size: 35px;
+  }
+  .features-container h3 {
+    font-size: 16px;
+  }
+  .features-container p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .about-us .info h2 {
+    font-size: 16px;
+    padding: 7px;
+  }
+  .about-us .info p {
+    max-width: 95%;
+  }
+  .about-us .info p:not(:last-child) {
+    padding-bottom: 5px;
+  }
+  .about-us .info h2 svg {
+    font-size: 15px;
+  }
+  .features-container > div {
+    padding: 10px;
+  }
+  .features-container > div svg {
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+  .features-container h3 {
+    font-size: 15px;
+  }
+  .features-container p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 400px) {
+  .about-us .info h2 {
+    font-size: 14px;
+    gap: 3px;
+  }
+  .about-us .info p {
+    font-size: 12px;
+    max-width: 96%;
+  }
+  .about-us .info h2 svg {
+    font-size: 14px;
+  }
+  .about-us .img img {
+    max-height: 300px;
+  }
 }

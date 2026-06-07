@@ -18,7 +18,7 @@ import { useClickOutside } from "./../../hooks/useClickOutside";
 const Navbar = () => {
   const { changeMode } = useDarkMode();
   const { user } = useAuth();
-  const { isOpen, toggleOpen, ref } = useClickOutside();
+  const { isOpen, toggleOpen, ref, setIsOpen } = useClickOutside();
 
   return (
     <header className="home-header gap-10 container">
@@ -33,7 +33,11 @@ const Navbar = () => {
       <div className="flex gap-10 flex-1 items-container" ref={ref}>
         <nav className={`flex-1 ${isOpen ? " active" : ""}`}>
           {pagesLinks?.map((link) => (
-            <NavLink key={link.to} to={link.to}>
+            <NavLink
+              key={link.to}
+              to={link.to}
+              onClick={() => setIsOpen(false)}
+            >
               {link.title}
             </NavLink>
           ))}

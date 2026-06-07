@@ -14,5 +14,6 @@ export const formatInputsData = (data = {}) => {
     }
   }
 
+
   return formatted;
 };

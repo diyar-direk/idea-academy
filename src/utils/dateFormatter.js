@@ -24,6 +24,6 @@ const dateFormatter = (date, format = "justYear", translate) => {
 
   const minutes = String(time.getMinutes()).padStart(2, "0");
 
-  return `${year}-${month}-${day} / ${hours}:${minutes} ${translate ? translate(`enums.${at}`) : at}`;
+  return `${year}-${month}-${day} / ${hours}:${minutes} ${translate ? translate(`${at}`) : at}`;
 };
 export default dateFormatter;

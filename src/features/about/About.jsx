@@ -9,9 +9,10 @@ import { aboutFeatures, aboutTabContent } from "./aboutContent";
 
 const About = () => {
   const [openTab, setOpenTab] = useState(0);
-  const handleTabClick = useCallback((index) => {
-    setOpenTab(index);
-  }, []);
+  const handleTabClick = useCallback(
+    (index) => setOpenTab((prev) => (index === prev ? null : index)),
+    [],
+  );
 
   return (
     <>
@@ -59,7 +60,7 @@ const About = () => {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum officiis aut ratione "
           }
         />
-        <div className="features-container">
+        <div className="features-container grid-3">
           {aboutFeatures?.map((t) => (
             <div key={t.title}>
               <div>

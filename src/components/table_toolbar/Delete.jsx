@@ -25,6 +25,7 @@ const Delete = ({
 
   const queryclient = useQueryClient();
   const apiClient = new APIClient(`${endPoint}${endPoints.deleteMany}`);
+  
   const handleDelete = useMutation({
     mutationFn: (ids) => apiClient.deleteAll({ ids }),
     onSuccess: () => {
