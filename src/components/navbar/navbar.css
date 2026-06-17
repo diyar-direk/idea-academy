@@ -78,6 +78,28 @@ body.dark .home-header {
 .home-header .mobile-menu {
   display: none;
 }
+.home-header .language {
+  position: absolute;
+  background-color: var(--body-color);
+  animation: fadeIn 0.4s;
+  top: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.home-header .language h4 {
+  cursor: pointer;
+  border-bottom: solid 1px var(--border-color);
+  line-height: 1.5;
+  text-transform: capitalize;
+  padding-inline: 5px;
+  font-size: clamp(11px, 1.1vw, 1.2vw);
+  font-weight: 600;
+}
+.home-header .language h4:hover,
+.home-header .language h4.active {
+  background-color: var(--border-color);
+  font-weight: bold;
+}
 
 @media (max-width: 1000px) {
   .home-header .logo {

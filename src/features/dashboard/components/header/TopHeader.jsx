@@ -6,7 +6,6 @@ import {
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icons } from "./../../../../constants/icons";
 import useDarkMode from "../../../../hooks/useDarkMode";
 import { languages } from "./../../../../constants/languages";
 import { useClickOutside } from "../../../../hooks/useClickOutside";
@@ -52,12 +51,6 @@ const TopHeader = () => {
               ))}
             </div>
           )}
-        </div>
-        <div className="search-container">
-          <label htmlFor="pages-search">
-            <input type="text" placeholder="search..." />
-            <FontAwesomeIcon icon={icons.search} />
-          </label>
         </div>
       </article>
     </div>

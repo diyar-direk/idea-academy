@@ -1,5 +1,5 @@
 :root {
-  --dashboard-padding: 90px;
+  --dashboard-padding: 9%;
 }
 .dashboard-header .top-header {
   height: 55px;
@@ -44,24 +44,7 @@
   display: flex;
   gap: 10px;
 }
-.top-header .search-container label {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 7px;
-  border: solid 1px white;
-  border-radius: 20px;
-  cursor: text;
-  background-color: white;
-}
-.top-header .search-container label input {
-  background-color: transparent;
-  border: none;
-  font-size: 12px;
-}
-.top-header .search-container label svg {
-  color: #666;
-}
+
 .dashboard-header .bottom-header {
   height: 65px;
   background-color: var(--body-color);
@@ -85,6 +68,7 @@
   cursor: pointer;
 }
 .bottom-header .link:hover h2,
+.bottom-header .link.active h2,
 .bottom-header .link:has(.active) h2 {
   border-color: var(--main-color);
   background-color: var(--section-color);
@@ -118,7 +102,6 @@
 .bottom-header .link article a:hover,
 .bottom-header .link article a.active {
   background-color: var(--aside-color);
-  border-color: var(--main-color);
 }
 .dashboard-main {
   padding: 40px var(--dashboard-padding);
@@ -141,4 +124,118 @@
 
 .dashboard-form-container .submit-btn {
   justify-self: end;
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --dashboard-padding: 7%;
+  }
+  .dashboard-header .top-header .logo {
+    font-size: 15px;
+  }
+  .bottom-header .link h2 {
+    font-size: 16px;
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .bottom-header .link article a {
+    font-size: 13px;
+    padding: 4px 9px;
+  }
+  .dashboard-header .top-header .language-options p {
+    padding: 2px 7px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 800px) {
+  :root {
+    --dashboard-padding: 6%;
+  }
+  .dashboard-header .top-header .logo {
+    font-size: 14px;
+  }
+  .dashboard-header .top-header {
+    height: 50px;
+  }
+  .dashboard-header .bottom-header {
+    height: 60px;
+  }
+  .bottom-header .link h2 {
+    font-size: 15px;
+    padding-inline: 9px;
+    gap: 6px;
+  }
+  .bottom-header .link article a {
+    font-size: 12px;
+    padding: 3px 8px;
+    gap: 4px;
+  }
+  .dashboard-header .top-header .language-options p {
+    padding: 2px 6px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --dashboard-padding: 5%;
+  }
+  .dashboard-header .top-header .logo {
+    font-size: 12px;
+  }
+  .dashboard-header .top-header {
+    height: 45px;
+  }
+  .dashboard-header .bottom-header {
+    height: 50px;
+  }
+  .bottom-header .link h2 {
+    font-size: 14px;
+    padding-inline: 6px;
+    gap: 4px;
+  }
+  .bottom-header .link article a {
+    font-size: 11px;
+    padding: 3px 6px;
+    gap: 3px;
+  }
+  .dashboard-form {
+    padding: 10px;
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  .dashboard-header .top-header .language-options p {
+    font-size: 11px;
+    padding: 2px 5px;
+  }
+}
+@media (max-width: 400px) {
+  :root {
+    --dashboard-padding: 3%;
+  }
+  .dashboard-header .top-header .logo {
+    font-size: 11px;
+  }
+  .dashboard-header .top-header {
+    height: 35px;
+  }
+  .dashboard-header .bottom-header {
+    height: 40px;
+  }
+  .bottom-header .link h2 {
+    font-size: 11px;
+    padding-inline: 4px;
+    border-bottom-width: 1.4px;
+  }
+  .bottom-header .link article a {
+    font-size: 10px;
+    padding: 2px 4px;
+    gap: 2px;
+  }
+  .dashboard-header .top-header article svg {
+    font-size: 12px;
+  }
+  .dashboard-header .top-header .language-options p {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
 }

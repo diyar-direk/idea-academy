@@ -4,16 +4,13 @@ import Logo from "../../assets/logo.png";
 import IconButton from "./../buttons/IconButton";
 import Button from "./../buttons/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBarsStaggered,
-  faLanguage,
-  faMoon,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBarsStaggered, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { pagesRouters } from "../../constants/pagesRouters";
 import { pagesLinks } from "../../constants/pagesLink";
 import useDarkMode from "./../../hooks/useDarkMode";
 import { useAuth } from "../../context/AuthContext";
 import { useClickOutside } from "./../../hooks/useClickOutside";
+import Language from "./Language";
 
 const Navbar = () => {
   const { changeMode } = useDarkMode();
@@ -48,9 +45,7 @@ const Navbar = () => {
           )}
         </nav>
 
-        <IconButton title="language" style={{ color: "var(--main-color)" }}>
-          <FontAwesomeIcon icon={faLanguage} />
-        </IconButton>
+        <Language />
 
         <IconButton title="mood" onClick={changeMode}>
           <FontAwesomeIcon icon={faMoon} />
