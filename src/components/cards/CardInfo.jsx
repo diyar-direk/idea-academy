@@ -14,9 +14,11 @@ const PostInfo = ({ data }) => {
           <FontAwesomeIcon icon={faClock} />
           {dateFormatter(data?.createdAt, "fullDate")}
         </div>
-        <a href={videoServerSrc(data?.video)} target="_blank">
-          <FontAwesomeIcon icon={faLink} />
-        </a>
+        {data?.video && (
+          <a href={videoServerSrc(data?.video)} target="_blank">
+            <FontAwesomeIcon icon={faLink} />
+          </a>
+        )}
       </article>
     </div>
   );

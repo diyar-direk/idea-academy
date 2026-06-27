@@ -2,11 +2,12 @@ import Breadcrumbs from "./../../../../../components/breadcrumbs/Breadcrumbs";
 import { useInfiniteFetch } from "./../../../../../hooks/useInfiniteFetch";
 import endPoints from "./../../../../../constants/endPoints";
 import { useMemo, useState } from "react";
-import PostComponent from "../../../../../components/posts/PostComponent";
 import DBkeys from "../../../../../constants/DBkeys";
 import Skeleton from "./../../../../../components/skeleton/Skeleton";
-import PostsSearch from "../../../../../components/posts/PostsSearch";
 import { formatInputsData } from "./../../../../../utils/formatInputsData";
+import Card from "../../../../../components/cards/Card";
+import { pagesRouters } from "../../../../../constants/pagesRouters";
+import CardsSearch from "./../../../../../components/cards/CardsSearch";
 
 const AllPosts = () => {
   const [filters, setFilters] = useState({});
@@ -35,7 +36,7 @@ const AllPosts = () => {
     <>
       <Breadcrumbs />
       <main className="dashboard-main">
-        <PostsSearch
+        <CardsSearch
           total={data?.total}
           sort={sort}
           setSort={setSort}
@@ -43,7 +44,12 @@ const AllPosts = () => {
         />
         <div className="grid-3">
           {data?.posts?.map((e) => (
-            <PostComponent data={e} key={e[DBkeys.id]} actions />
+            <Card
+              data={e}
+              actions
+              endPoint={endPoints.posts}
+              updateUrl={pagesRouters.dashboard.posts.update}
+            />
           ))}
           {isFetching && (
             <Skeleton height="100%" style={{ minHeight: "300px" }} />

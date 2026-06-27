@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
-import { useInfiniteFetch } from "./../../../hooks/useInfiniteFetch";
-import { formatInputsData } from "./../../../utils/formatInputsData";
+import { useInfiniteFetch } from "../../../hooks/useInfiniteFetch";
+import { formatInputsData } from "../../../utils/formatInputsData";
 import endPoints from "../../../constants/endPoints";
-import Breadcrumbs from "./../../../components/breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../components/breadcrumbs/Breadcrumbs";
 import DBkeys from "../../../constants/DBkeys";
-import Skeleton from "./../../../components/skeleton/Skeleton";
-import CardsSearch from "./../../../components/cards/CardsSearch";
+import Skeleton from "../../../components/skeleton/Skeleton";
+import CardsSearch from "../../../components/cards/CardsSearch";
 import Card from "../../../components/cards/Card";
 
-const AllPosts = () => {
+const AllCourses = () => {
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("-createdAt");
 
@@ -17,7 +17,7 @@ const AllPosts = () => {
     isFetching,
     loadMoreRef,
   } = useInfiniteFetch({
-    endPoint: endPoints.posts,
+    endPoint: endPoints.courses,
     limit: 2,
     sort,
     ...formatInputsData(filters),
@@ -25,7 +25,7 @@ const AllPosts = () => {
 
   const data = useMemo(
     () => ({
-      posts: d?.pages?.flatMap((e) => e.data),
+      courses: d?.pages?.flatMap((e) => e.data),
       total: d?.pages?.[0]?.totalCount,
     }),
     [d],
@@ -42,7 +42,7 @@ const AllPosts = () => {
           setFilters={setFilters}
         />
         <div className="grid-3">
-          {data?.posts?.map((e) => (
+          {data?.courses?.map((e) => (
             <Card data={e} key={e[DBkeys.id]} />
           ))}
           {isFetching && (
@@ -55,4 +55,4 @@ const AllPosts = () => {
   );
 };
 
-export default AllPosts;
+export default AllCourses;

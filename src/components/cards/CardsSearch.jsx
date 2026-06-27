@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./post.css";
+import "./card.css";
 import { icons } from "../../constants/icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useClickOutside } from "./../../hooks/useClickOutside";
+import { useClickOutside } from "../../hooks/useClickOutside";
 import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
@@ -11,7 +11,7 @@ const sortStatus = {
   "-createdAt": "oldest",
 };
 
-const PostsSearch = ({ total, sort, setSort, setFilters }) => {
+const CardsSearch = ({ total, sort, setSort, setFilters }) => {
   const [search, setSearch] = useState();
 
   const [debouncedValue] = useDebounce(search, 500);
@@ -72,4 +72,4 @@ const PostsSearch = ({ total, sort, setSort, setFilters }) => {
   );
 };
 
-export default PostsSearch;
+export default CardsSearch;

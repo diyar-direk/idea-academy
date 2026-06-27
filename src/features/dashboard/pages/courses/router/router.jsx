@@ -1,32 +1,32 @@
 import { pagesRouters } from "./../../../../../constants/pagesRouters";
 import PageFallback from "./../../../../../components/PageFallBack";
 import { lazy } from "react";
-const AllPosts = lazy(() => import("../pages/AllPosts"));
-const AddPost = lazy(() => import("../pages/AddPost"));
-const UpdatePost = lazy(() => import("../pages/UpdatePost"));
+const AllCourses = lazy(() => import("../pages/AllCourses"));
+const AddCourse = lazy(() => import("../pages/AddCourse"));
+const UpdateCourse = lazy(() => import("../pages/UpdateCourse"));
 
-export const dashboardPostsRouter = [
+export const dashboardCourseRouter = [
   {
-    path: pagesRouters.dashboard.posts.page,
+    path: pagesRouters.dashboard.courses.page,
     element: (
       <PageFallback>
-        <AllPosts />
+        <AllCourses />
       </PageFallback>
     ),
   },
   {
-    path: pagesRouters.dashboard.posts.add,
+    path: pagesRouters.dashboard.courses.add,
     element: (
       <PageFallback>
-        <AddPost />
+        <AddCourse />
       </PageFallback>
     ),
   },
   {
-    path: pagesRouters.dashboard.posts.update(),
+    path: pagesRouters.dashboard.courses.update(),
     element: (
       <PageFallback>
-        <UpdatePost />
+        <UpdateCourse />
       </PageFallback>
     ),
   },

@@ -38,6 +38,11 @@ export const postsSchema = yup.object({
       ];
 
       return allowedVideoTypes.includes(value?.file?.type);
+    })
+    .test("video-size", "Video size must be less than 100 MB", (value) => {
+      if (!value || typeof value === "string") return true;
+
+      return value?.file?.size <= 100 * 1024 * 1024;
     }),
 });
 
@@ -61,5 +66,11 @@ export const updatePostSchema = yup.object({
       return allowedTypes.includes(value?.file?.type);
     }),
 
-  video: yup.mixed().nullable(),
+  video: yup
+    .mixed()
+    .nullable()
+    .test("video-size", "Video size must be less than 100 MB", (value) => {
+      if (!value || typeof value === "string") return true;
+      return value?.file?.size <= 100 * 1024 * 1024;
+    }),
 });

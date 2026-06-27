@@ -3,7 +3,7 @@ import imgServerSrc from "../../utils/imgServerSrc";
 import videoServerSrc from "../../utils/videoServerSrv";
 import ImgViewPopup from "../popup/ImgViewPopup";
 
-const PostCover = ({ data }) => {
+const CardCover = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,4 +29,4 @@ const PostCover = ({ data }) => {
   );
 };
 
-export default PostCover;
+export default CardCover;

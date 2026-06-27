@@ -8,11 +8,11 @@ import endPoints from "../../../../../constants/endPoints";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
-import { postsSchema } from "./../../../../../schemas/post";
 import UploadPhoto from "../../../../../components/inputs/UploadPhoto";
-const api = new APIClient(endPoints.posts);
+import { courseSchema } from "../../../../../schemas/course";
+const api = new APIClient(endPoints.courses);
 
-const AddPost = () => {
+const AddCourse = () => {
   const query = useQueryClient();
   const nav = useNavigate();
 
@@ -24,23 +24,20 @@ const AddPost = () => {
       if (v.image?.file) {
         formData.append("image", v.image?.file);
       }
-      if (v.video) {
-        formData.append(
-          "video",
-          typeof v.video === "object" ? v.video?.file : v.video,
-        );
+      if (v.video?.file) {
+        formData.append("video", v.video?.file);
       }
-      api.addData(formData);
+      return api.addData(formData);
     },
     onSuccess: () => {
-      query.invalidateQueries([endPoints.posts]);
+      query.invalidateQueries([endPoints.courses]);
       nav(-1);
     },
   });
 
   const formik = useFormik({
     initialValues: { title: "", content: "", image: null, video: "" },
-    validationSchema: postsSchema,
+    validationSchema: courseSchema,
     onSubmit: handleAdd.mutate,
   });
 
@@ -74,7 +71,7 @@ const AddPost = () => {
               containerProps={{ className: "w-100" }}
             />
           </div>
-          <div className="dashboard-form">
+          <div className="dashboard-form flex-form">
             <UploadPhoto
               errorText={formik.errors.image}
               notRequired
@@ -93,19 +90,6 @@ const AddPost = () => {
               onChange={(i) => formik.setFieldValue("video", i)}
               value={formik.values.video}
             />
-            {typeof formik.values.video !== "object" && (
-              <Input
-                label="video"
-                placeholder="enter video"
-                errorText={formik.errors.video}
-                value={formik.values.video}
-                onChange={formik.handleChange}
-                name="video"
-                containerProps={{ className: "w-100" }}
-                notRequired
-                type="url"
-              />
-            )}
           </div>
           <Button className="submit-btn" type="submit">
             save
@@ -116,4 +100,4 @@ const AddPost = () => {
   );
 };
 
-export default AddPost;
+export default AddCourse;

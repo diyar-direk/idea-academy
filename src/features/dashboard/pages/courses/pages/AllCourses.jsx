@@ -1,12 +1,13 @@
-import Breadcrumbs from "./../../../../../components/breadcrumbs/Breadcrumbs";
-import { useInfiniteFetch } from "./../../../../../hooks/useInfiniteFetch";
-import endPoints from "./../../../../../constants/endPoints";
+import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
+import { useInfiniteFetch } from "../../../../../hooks/useInfiniteFetch";
+import endPoints from "../../../../../constants/endPoints";
 import { useMemo, useState } from "react";
-import PostComponent from "../../../../../components/posts/PostComponent";
 import DBkeys from "../../../../../constants/DBkeys";
-import Skeleton from "./../../../../../components/skeleton/Skeleton";
-import PostsSearch from "../../../../../components/posts/PostsSearch";
-import { formatInputsData } from "./../../../../../utils/formatInputsData";
+import Skeleton from "../../../../../components/skeleton/Skeleton";
+import { formatInputsData } from "../../../../../utils/formatInputsData";
+import CardsSearch from "../../../../../components/cards/CardsSearch";
+import Card from "../../../../../components/cards/Card";
+import { pagesRouters } from "../../../../../constants/pagesRouters";
 
 const AllPosts = () => {
   const [filters, setFilters] = useState({});
@@ -17,7 +18,7 @@ const AllPosts = () => {
     isFetching,
     loadMoreRef,
   } = useInfiniteFetch({
-    endPoint: endPoints.posts,
+    endPoint: endPoints.courses,
     limit: 1,
     sort,
     ...formatInputsData(filters),
@@ -25,7 +26,7 @@ const AllPosts = () => {
 
   const data = useMemo(
     () => ({
-      posts: d?.pages?.flatMap((e) => e.data),
+      courses: d?.pages?.flatMap((e) => e.data),
       total: d?.pages?.[0]?.totalCount,
     }),
     [d],
@@ -35,15 +36,21 @@ const AllPosts = () => {
     <>
       <Breadcrumbs />
       <main className="dashboard-main">
-        <PostsSearch
+        <CardsSearch
           total={data?.total}
           sort={sort}
           setSort={setSort}
           setFilters={setFilters}
         />
         <div className="grid-3">
-          {data?.posts?.map((e) => (
-            <PostComponent data={e} key={e[DBkeys.id]} actions />
+          {data?.courses?.map((e) => (
+            <Card
+              data={e}
+              key={e[DBkeys.id]}
+              actions
+              endPoint={endPoints.courses}
+              updateUrl={pagesRouters.dashboard.courses.update}
+            />
           ))}
           {isFetching && (
             <Skeleton height="100%" style={{ minHeight: "300px" }} />

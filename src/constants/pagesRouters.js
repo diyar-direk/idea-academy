@@ -24,6 +24,7 @@ export const pagesRouters = {
     courses: {
       page: "/dashboard/courses",
       add: "/dashboard/courses/add",
+      update: (id = ":id") => `/dashboard/courses/${id}`,
     },
   },
 };

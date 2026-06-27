@@ -7,8 +7,8 @@ import Button from "../../../components/buttons/Button";
 import { useQuery } from "@tanstack/react-query";
 import endPoints from "./../../../constants/endPoints";
 import APIClient from "./../../../utils/ApiClient";
-import PostComponent from "./../../../components/posts/PostComponent";
 import DBkeys from "../../../constants/DBkeys";
+import Card from "./../../../components/cards/Card";
 
 const api = new APIClient(endPoints.posts);
 const HomeEvents = () => {
@@ -29,7 +29,7 @@ const HomeEvents = () => {
       />
       <div className="grid-3 body-style-posts">
         {data?.data?.map((e) => (
-          <PostComponent key={e[DBkeys.id]} data={e} />
+          <Card key={e[DBkeys.id]} data={e} />
         ))}
       </div>
 

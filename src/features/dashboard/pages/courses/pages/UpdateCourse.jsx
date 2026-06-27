@@ -8,22 +8,22 @@ import endPoints from "../../../../../constants/endPoints";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
 import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
-import { updatePostSchema } from "./../../../../../schemas/post";
 import UploadPhoto from "../../../../../components/inputs/UploadPhoto";
 import Skeleton from "../../../../../components/skeleton/Skeleton";
-import HandleError from "./../../../../../components/error/HandleError";
+import HandleError from "../../../../../components/error/HandleError";
 import imgServerSrc from "../../../../../utils/imgServerSrc";
 import videoServerSrc from "../../../../../utils/videoServerSrv";
+import { courseSchema } from "../../../../../schemas/course";
 
-const api = new APIClient(endPoints.posts);
+const api = new APIClient(endPoints.courses);
 
-const UpdatePost = () => {
+const UpdateCourse = () => {
   const query = useQueryClient();
   const nav = useNavigate();
   const { id } = useParams();
 
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [endPoints.posts, id],
+    queryKey: [endPoints.courses, id],
     queryFn: () => api.getOne(id),
   });
 
@@ -35,16 +35,13 @@ const UpdatePost = () => {
       if (v.image?.file) {
         formData.append("image", v.image?.file);
       }
-      if (v.video) {
-        formData.append(
-          "video",
-          typeof v.video === "object" ? v.video?.file : v.video,
-        );
+      if (v.video?.file) {
+        formData.append("video", v.video?.file);
       }
       api.updateData({ data: formData, id });
     },
     onSuccess: () => {
-      query.invalidateQueries([endPoints.posts]);
+      query.invalidateQueries([endPoints.courses]);
       nav(-1);
     },
   });
@@ -56,7 +53,7 @@ const UpdatePost = () => {
       image: null,
       video: data?.video || "",
     },
-    validationSchema: updatePostSchema,
+    validationSchema: courseSchema,
     onSubmit: handleAdd.mutate,
     enableReinitialize: true,
   });
@@ -94,7 +91,7 @@ const UpdatePost = () => {
               containerProps={{ className: "w-100" }}
             />
           </div>
-          <div className="dashboard-form">
+          <div className="dashboard-form flex-form">
             <UploadPhoto
               errorText={formik.errors.image}
               notRequired
@@ -115,18 +112,6 @@ const UpdatePost = () => {
               value={formik.values.video}
               defaultVideo={data?.video && videoServerSrc(data?.video)}
             />
-            {typeof formik.values.video !== "object" && (
-              <Input
-                label="video"
-                placeholder="enter video"
-                errorText={formik.errors.video}
-                value={formik.values.video}
-                onChange={formik.handleChange}
-                name="video"
-                containerProps={{ className: "w-100" }}
-                notRequired
-              />
-            )}
           </div>
           <Button className="submit-btn" type="submit">
             save
@@ -137,4 +122,4 @@ const UpdatePost = () => {
   );
 };
 
-export default UpdatePost;
+export default UpdateCourse;

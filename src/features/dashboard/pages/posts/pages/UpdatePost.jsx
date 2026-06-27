@@ -41,7 +41,7 @@ const UpdatePost = () => {
           typeof v.video === "object" ? v.video?.file : v.video,
         );
       }
-      api.updateData({ data: formData, id });
+      return api.updateData({ data: formData, id });
     },
     onSuccess: () => {
       query.invalidateQueries([endPoints.posts]);

@@ -125,6 +125,9 @@
 .dashboard-form-container .submit-btn {
   justify-self: end;
 }
+.flex-form .upload-file {
+  flex: 300px;
+}
 
 @media (max-width: 1000px) {
   :root {

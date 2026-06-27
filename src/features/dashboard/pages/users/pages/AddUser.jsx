@@ -17,7 +17,7 @@ const AddUser = () => {
   const handleAdd = useMutation({
     mutationFn: (v) => {
       delete v.confirmPassword;
-      api.addData(v);
+      return api.addData(v);
     },
     onSuccess: () => {
       query.invalidateQueries([endPoints.users]);

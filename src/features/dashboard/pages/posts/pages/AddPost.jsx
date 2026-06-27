@@ -30,7 +30,7 @@ const AddPost = () => {
           typeof v.video === "object" ? v.video?.file : v.video,
         );
       }
-      api.addData(formData);
+      return api.addData(formData);
     },
     onSuccess: () => {
       query.invalidateQueries([endPoints.posts]);
