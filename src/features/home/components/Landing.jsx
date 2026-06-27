@@ -17,27 +17,13 @@ const Landing = () => {
           possimus porro!
         </p>
         <div className="flex gap-10 btns-container">
-          <Link to={pagesRouters.courses}>
+          <Link to={pagesRouters.courses.page}>
             <Button btnStyleType="outlined"> explorer courses</Button>
           </Link>
           <Link to={pagesRouters.contact}>
             <Button> join us</Button>
           </Link>
         </div>
-        {/* <div className="flex statistics">
-          <article>
-            <h2>5000</h2>
-            students
-          </article>
-          <article>
-            <h2>5000</h2>
-            students
-          </article>
-          <article>
-            <h2>5000</h2>
-            students
-          </article>
-        </div> */}
       </div>
       <div className="flex-1 flex img">
         <img src={LandingImg} alt="" />

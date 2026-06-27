@@ -10,7 +10,7 @@ const HomeRegister = () => {
           انضم إلى آلاف الطلاب الذين غيروا مسارهم المهني وبدأوا مشوارهم في عالم
           البرمجة من خلال أكاديميتنا. لا تؤجل حلمك، ابدأ الآن!
         </p>
-        <Link to={pagesRouters.courses}> انضم لنا في الحال </Link>
+        <Link to={pagesRouters.contact}> انضم لنا في الحال </Link>
       </div>
     </section>
   );
