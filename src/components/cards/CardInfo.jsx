@@ -4,10 +4,19 @@ import dateFormatter from "../../utils/dateFormatter";
 import videoServerSrc from "../../utils/videoServerSrv";
 
 const PostInfo = ({ data }) => {
+  const text = new DOMParser()
+    .parseFromString(data.content, "text/html")
+    .body.textContent.trim();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.open(videoServerSrc(data?.video), "_blank");
+  };
+
   return (
     <div>
-      <h2>{data?.title}</h2>
-      <p>{data?.content}</p>
+      <h2 className="two-line-ellipsis">{data?.title}</h2>
+      <p className="one-line-ellipsis">{text}</p>
 
       <article className="post-footer">
         <div className="time">
@@ -15,9 +24,9 @@ const PostInfo = ({ data }) => {
           {dateFormatter(data?.createdAt, "fullDate")}
         </div>
         {data?.video && (
-          <a href={videoServerSrc(data?.video)} target="_blank">
+          <span onClick={handleClick}>
             <FontAwesomeIcon icon={faLink} />
-          </a>
+          </span>
         )}
       </article>
     </div>

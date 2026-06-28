@@ -19,12 +19,14 @@ export const pagesRouters = {
     posts: {
       page: "/dashboard/posts",
       add: "/dashboard/posts/add",
-      update: (id = ":id") => `/dashboard/posts/${id}`,
+      view: (id = ":id") => `/dashboard/posts/${id}`,
+      update: (id = ":id") => `/dashboard/posts/${id}/update`,
     },
     courses: {
       page: "/dashboard/courses",
       add: "/dashboard/courses/add",
-      update: (id = ":id") => `/dashboard/courses/${id}`,
+      view: (id = ":id") => `/dashboard/courses/${id}`,
+      update: (id = ":id") => `/dashboard/courses/${id}/update`,
     },
   },
 };

@@ -178,6 +178,21 @@ body::-webkit-scrollbar {
   gap: 30px;
 }
 
+.two-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.one-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 1000px) {
   .grid-3 {
     grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));

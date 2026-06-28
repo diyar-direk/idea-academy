@@ -5,6 +5,11 @@
   background-color: var(--body-color);
   border-radius: 10px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.post-card .card-container {
+  flex: 1;
 }
 
 .post-card .post-actions {
@@ -27,28 +32,28 @@
   height: 300px;
   object-fit: cover;
 }
-.post-card > div {
+.post-card .card-container > div {
   padding: 20px;
   color: var(--font-color);
 }
-.post-card > div h2 {
+.post-card .card-container > div h2 {
   text-transform: capitalize;
   font-size: 23px;
   font-weight: 700;
 }
-.post-card > div p {
+.post-card .card-container > div p {
   opacity: 0.7;
   font-size: 15px;
   font-weight: 500;
 }
-.post-card > div .time {
+.post-card .card-container > div .time {
   font-size: 13px;
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.post-card > div .post-footer {
+.post-card .card-container > div .post-footer {
   opacity: 0.5;
   display: flex;
   font-size: 14px;
@@ -58,7 +63,7 @@
   padding-top: 5px;
 }
 
-.post-card > div .post-footer a:hover {
+.post-card .card-container > div .post-footer a:hover {
   color: rgb(0, 153, 255);
 }
 .posts-search {
@@ -145,16 +150,16 @@
   .posts-search .filters-container .sort .sort-options h4 {
     font-size: 13px;
   }
-  .post-card > div h2 {
+  .post-card .card-container > div h2 {
     font-size: 20px;
   }
-  .post-card > div p {
+  .post-card .card-container > div p {
     font-size: 14px;
   }
-  .post-card > div .post-footer {
+  .post-card .card-container > div .post-footer {
     font-size: 13px;
   }
-  .post-card > div .time {
+  .post-card .card-container > div .time {
     font-size: 12px;
   }
 }
@@ -173,21 +178,21 @@
     font-size: 12px;
     padding: 2px 8px;
   }
-  .post-card > div h2 {
+  .post-card .card-container > div h2 {
     font-size: 17px;
   }
-  .post-card > div p {
+  .post-card .card-container > div p {
     font-size: 13px;
   }
-  .post-card > div .post-footer {
+  .post-card .card-container > div .post-footer {
     font-size: 12px;
     margin-top: 2px;
     padding-top: 0px;
   }
-  .post-card > div .time {
+  .post-card .card-container > div .time {
     font-size: 11px;
   }
-  .post-card > div {
+  .post-card .card-container > div {
     padding: 15px;
   }
   .posts-search .filters-container label input {
@@ -209,16 +214,16 @@
     font-size: 12px;
     padding: 2px 6px;
   }
-  .post-card > div h2 {
+  .post-card .card-container > div h2 {
     font-size: 15px;
   }
-  .post-card > div p {
+  .post-card .card-container > div p {
     font-size: 12px;
   }
-  .post-card > div .post-footer {
+  .post-card .card-container > div .post-footer {
     font-size: 12px;
   }
-  .post-card > div {
+  .post-card .card-container > div {
     padding: 10px;
   }
   .posts-search .filters-container label input {
@@ -239,14 +244,14 @@
     font-size: 11px;
     padding: 2px 6px;
   }
-  .post-card > div h2 {
+  .post-card .card-container > div h2 {
     font-size: 14px;
   }
-  .post-card > div p {
+  .post-card .card-container > div p {
     font-size: 11px;
   }
 
-  .post-card > div {
+  .post-card .card-container > div {
     padding: 8px;
   }
   .posts-search .filters-container label input {

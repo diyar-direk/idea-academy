@@ -129,6 +129,29 @@
   flex: 300px;
 }
 
+.dashboard-form-container .editor {
+  min-height: 300px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-form-container .editor > div {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--section-color);
+  border-radius: 5px;
+  overflow: hidden;
+  flex: 1;
+}
+.dashboard-form-container .editor > div [data-pc-section="content"] {
+  flex: 1;
+  border-color: var(--border-color);
+}
+.dashboard-form-container .editor > div [data-pc-section="toolbar"] {
+  border-color: var(--border-color);
+  direction: ltr;
+}
+
 @media (max-width: 1000px) {
   :root {
     --dashboard-padding: 7%;

@@ -50,6 +50,7 @@ const AllPosts = () => {
               actions
               endPoint={endPoints.courses}
               updateUrl={pagesRouters.dashboard.courses.update}
+              view={pagesRouters.dashboard.courses.view}
             />
           ))}
           {isFetching && (

@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const courseSchema = yup.object({
   title: yup.string().required().min(3).max(50),
 
-  content: yup.string().required().min(10).max(1000),
+  content: yup.string().required(),
 
   image: yup
     .mixed()

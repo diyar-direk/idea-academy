@@ -10,6 +10,8 @@ import { useNavigate } from "react-router";
 import Breadcrumbs from "../../../../../components/breadcrumbs/Breadcrumbs";
 import UploadPhoto from "../../../../../components/inputs/UploadPhoto";
 import { courseSchema } from "../../../../../schemas/course";
+import { editorHeader } from "../../../../../constants/editor";
+import { Editor } from "primereact/editor";
 const api = new APIClient(endPoints.courses);
 
 const AddCourse = () => {
@@ -59,17 +61,19 @@ const AddCourse = () => {
               name="title"
               containerProps={{ className: "w-100" }}
             />
-            <Input
-              label="content"
-              placeholder="enter content"
-              errorText={formik.errors.content}
-              value={formik.values.content}
-              onChange={formik.handleChange}
-              name="content"
-              elementType="textarea"
-              rows={4}
-              containerProps={{ className: "w-100" }}
-            />
+            <div className="editor inp">
+              <label className="required">{"posts_page.content"}</label>
+              <Editor
+                value={formik.values.content}
+                onTextChange={(e) =>
+                  formik.setFieldValue("content", e.htmlValue)
+                }
+                headerTemplate={editorHeader}
+              />
+              {formik.errors?.content && (
+                <p className="field-error">{formik.errors?.content}</p>
+              )}
+            </div>
           </div>
           <div className="dashboard-form flex-form">
             <UploadPhoto

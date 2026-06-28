@@ -4,6 +4,7 @@ import { lazy } from "react";
 const AllCourses = lazy(() => import("../pages/AllCourses"));
 const AddCourse = lazy(() => import("../pages/AddCourse"));
 const UpdateCourse = lazy(() => import("../pages/UpdateCourse"));
+const ViewCourse = lazy(() => import("../pages/ViewCourse"));
 
 export const dashboardCourseRouter = [
   {
@@ -19,6 +20,14 @@ export const dashboardCourseRouter = [
     element: (
       <PageFallback>
         <AddCourse />
+      </PageFallback>
+    ),
+  },
+  {
+    path: pagesRouters.dashboard.courses.view(),
+    element: (
+      <PageFallback>
+        <ViewCourse />
       </PageFallback>
     ),
   },

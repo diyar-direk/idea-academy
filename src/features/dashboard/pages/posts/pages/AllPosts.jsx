@@ -49,6 +49,8 @@ const AllPosts = () => {
               actions
               endPoint={endPoints.posts}
               updateUrl={pagesRouters.dashboard.posts.update}
+              view={pagesRouters.dashboard.posts.view}
+              key={e[DBkeys.id]}
             />
           ))}
           {isFetching && (
