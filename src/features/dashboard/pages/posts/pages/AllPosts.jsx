@@ -19,7 +19,7 @@ const AllPosts = () => {
     loadMoreRef,
   } = useInfiniteFetch({
     endPoint: endPoints.posts,
-    limit: 1,
+    limit: 3,
     sort,
     ...formatInputsData(filters),
   });

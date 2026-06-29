@@ -3,11 +3,11 @@ const DBkeys = {
   id: "id",
   sort: "sort",
   page: "page",
-  totalPages: "total_pages",
+  totalPages: "totalPages",
   search: "search",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
-  totalCount: "totalCount",
+  totalCount: "total",
 };
 
 export default DBkeys;

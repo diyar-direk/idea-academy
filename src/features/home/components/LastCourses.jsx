@@ -29,7 +29,7 @@ const HomeEvents = () => {
       />
       <div className="grid-3">
         {data?.data?.map((e) => (
-          <Card key={e[DBkeys.id]} data={e} />
+          <Card key={e[DBkeys.id]} data={e} view={pagesRouters.courses.view} />
         ))}
       </div>
 

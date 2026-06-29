@@ -20,10 +20,11 @@
   cursor: pointer;
   background: var(--body-color);
 }
-.card-view .ql-editor {
+.ql-container.ql-snow {
   height: auto;
+  border: none !important;
 }
-.card-view .ql-editor a {
+.ql-container.ql-snow a {
   text-decoration: underline;
 }
 .card-view .view-sidebar {
@@ -62,4 +63,10 @@
 }
 .view-sidebar .view-info article .value {
   font-weight: 600;
+}
+
+.view-more-results {
+  margin-top: 20px;
+  border-top: solid 1px var(--border-color);
+  padding-top: 20px;
 }

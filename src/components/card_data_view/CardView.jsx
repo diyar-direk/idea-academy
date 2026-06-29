@@ -3,6 +3,8 @@ import imgServerSrc from "../../utils/imgServerSrc";
 import dateFormatter from "../../utils/dateFormatter";
 import videoServerSrc from "../../utils/videoServerSrv";
 import "./style.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import "primereact/resources/primereact.min.css";
 import "quill/dist/quill.snow.css";
 import { faArrowsRotate, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,10 +28,12 @@ const CardView = ({ data }) => {
             />
           )}
 
-          <div
-            className="ql-editor"
-            dangerouslySetInnerHTML={{ __html: data?.content }}
-          ></div>
+          <div className="ql-container ql-snow">
+            <div
+              className="ql-editor"
+              dangerouslySetInnerHTML={{ __html: data?.content }}
+            />
+          </div>
         </main>
 
         <aside className="view-sidebar">

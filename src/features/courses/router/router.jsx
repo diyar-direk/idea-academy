@@ -1,7 +1,8 @@
 import { lazy } from "react";
 import { pagesRouters } from "../../../constants/pagesRouters";
-const AllCourses = lazy(() => import("../pages/AllCourses"));
 import PageFallback from "./../../../components/PageFallBack";
+const AllCourses = lazy(() => import("../pages/AllCourses"));
+const ViewCourse = lazy(() => import("../pages/ViewCourse"));
 
 export const coursesRouter = [
   {
@@ -9,6 +10,14 @@ export const coursesRouter = [
     element: (
       <PageFallback>
         <AllCourses />
+      </PageFallback>
+    ),
+  },
+  {
+    path: pagesRouters.courses.view(),
+    element: (
+      <PageFallback>
+        <ViewCourse />
       </PageFallback>
     ),
   },

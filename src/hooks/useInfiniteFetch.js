@@ -19,6 +19,7 @@ export const useInfiniteFetch = ({ endPoint, enabled = true, ...params }) => {
 
     getNextPageParam: (lastPage, allPages) => {
       const nextPage = allPages?.length + 1;
+
       return nextPage <= lastPage?.[DBkeys.totalPages] ? nextPage : undefined;
     },
     enabled,

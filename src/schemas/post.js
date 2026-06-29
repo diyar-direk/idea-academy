@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const postsSchema = yup.object({
-  title: yup.string().required().min(3).max(50),
+  title: yup.string().required().min(3),
 
   content: yup.string().required(),
 
@@ -47,7 +47,7 @@ export const postsSchema = yup.object({
 });
 
 export const updatePostSchema = yup.object({
-  title: yup.string().required().min(3).max(50),
+  title: yup.string().required().min(3),
 
   content: yup.string().required(),
 

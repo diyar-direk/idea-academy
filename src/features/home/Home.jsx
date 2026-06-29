@@ -1,4 +1,4 @@
-import HomeEvents from "./components/HomeEvents";
+import HomePosts from "./components/HomePosts";
 import HomeRegister from "./components/HomeRegister";
 import Landing from "./components/Landing";
 import LastCourses from "./components/LastCourses";
@@ -11,7 +11,7 @@ const Home = () => {
       <WhyUs />
       <LastCourses />
       <HomeRegister />
-      <HomeEvents />
+      <HomePosts />
     </>
   );
 };

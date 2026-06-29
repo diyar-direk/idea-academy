@@ -34,13 +34,17 @@ class APIClient {
       params: paramFilters,
     });
 
-    const { total, total_pages, data: d } = data;
+    const {
+      [DBkeys.totalCount]: total,
+      [DBkeys.totalPages]: pages,
+      data: d,
+    } = data;
 
     return {
       data: d || data,
-      [DBkeys.totalCount]: total || 0,
+      totalCount: total || 0,
       limit,
-      [DBkeys.totalPages]: total_pages || Math.floor(total / limit) || 1,
+      totalPages: pages || Math.ceil(total / limit) || 1,
     };
   };
 

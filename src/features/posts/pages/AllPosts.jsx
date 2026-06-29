@@ -7,6 +7,7 @@ import DBkeys from "../../../constants/DBkeys";
 import Skeleton from "./../../../components/skeleton/Skeleton";
 import CardsSearch from "./../../../components/cards/CardsSearch";
 import Card from "../../../components/cards/Card";
+import { pagesRouters } from "../../../constants/pagesRouters";
 
 const AllPosts = () => {
   const [filters, setFilters] = useState({});
@@ -18,7 +19,7 @@ const AllPosts = () => {
     loadMoreRef,
   } = useInfiniteFetch({
     endPoint: endPoints.posts,
-    limit: 2,
+    limit: 3,
     sort,
     ...formatInputsData(filters),
   });
@@ -43,7 +44,7 @@ const AllPosts = () => {
         />
         <div className="grid-3">
           {data?.posts?.map((e) => (
-            <Card data={e} key={e[DBkeys.id]} />
+            <Card data={e} key={e[DBkeys.id]} view={pagesRouters.posts.view} />
           ))}
           {isFetching && (
             <Skeleton height="100%" style={{ minHeight: "300px" }} />

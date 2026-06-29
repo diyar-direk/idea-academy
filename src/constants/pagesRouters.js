@@ -4,9 +4,11 @@ export const pagesRouters = {
   contact: "/contact",
   posts: {
     page: "/posts",
+    view: (id = ":id") => `/posts/${id}`,
   },
   courses: {
     page: "/courses",
+    view: (id = ":id") => `/courses/${id}`,
   },
   login: "/login",
   dashboard: {

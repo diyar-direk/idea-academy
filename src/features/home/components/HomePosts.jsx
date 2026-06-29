@@ -5,13 +5,13 @@ import { pagesRouters } from "../../../constants/pagesRouters";
 import { Link } from "react-router";
 import Button from "../../../components/buttons/Button";
 import { useQuery } from "@tanstack/react-query";
-import endPoints from "./../../../constants/endPoints";
-import APIClient from "./../../../utils/ApiClient";
+import endPoints from "../../../constants/endPoints";
+import APIClient from "../../../utils/ApiClient";
 import DBkeys from "../../../constants/DBkeys";
-import Card from "./../../../components/cards/Card";
+import Card from "../../../components/cards/Card";
 
 const api = new APIClient(endPoints.posts);
-const HomeEvents = () => {
+const HomePosts = () => {
   const { data } = useQuery({
     queryKey: [endPoints.posts],
     queryFn: () => api.getAll({ limit: 3, sort: `-${DBkeys.createdAt}` }),
@@ -29,7 +29,7 @@ const HomeEvents = () => {
       />
       <div className="grid-3 body-style-posts">
         {data?.data?.map((e) => (
-          <Card key={e[DBkeys.id]} data={e} />
+          <Card key={e[DBkeys.id]} data={e} view={pagesRouters.posts.view} />
         ))}
       </div>
 
@@ -42,4 +42,4 @@ const HomeEvents = () => {
   );
 };
 
-export default HomeEvents;
+export default HomePosts;
